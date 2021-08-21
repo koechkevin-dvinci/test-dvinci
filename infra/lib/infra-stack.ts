@@ -22,6 +22,9 @@ export class InfraStack extends cdk.Stack {
     // add the rewrite rules 
     amplifyApp.addCustomRule(amplify.CustomRule.SINGLE_PAGE_APPLICATION_REDIRECT);
 
+    // add env variable for npm registry 
+    const npmToken = cdk.SecretValue.secretsManager("dev/npm/read-access-token").toString();
+    amplifyApp.addEnvironment("NPM_TOKEN", npmToken);
     
   }
 }

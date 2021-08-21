@@ -4,6 +4,7 @@ frontend:
     preBuild:
       commands:
         - yarn install --frozen-lockfile
+        - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
     build:
       commands:
         - yarn build-storybook
