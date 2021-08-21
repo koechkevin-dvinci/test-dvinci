@@ -3,11 +3,11 @@ frontend:
   phases:
     preBuild:
       commands:
-        - yarn install --frozen-lockfile
+        - npm ci
         - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
     build:
       commands:
-        - yarn build-storybook
+        - npm run build-storybook
   artifacts:
     baseDirectory: storybook-static
     files:
