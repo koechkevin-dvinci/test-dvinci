@@ -3,7 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - yarn ci
+        - yarn install --frozen-lockfile
     build:
       commands:
         - yarn build-storybook
