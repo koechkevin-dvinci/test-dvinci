@@ -14,6 +14,9 @@ export class InfraStack extends cdk.Stack {
       }),
       basicAuth: amplify.BasicAuth.fromCredentials("dvinci1", cdk.SecretValue.secretsManager("dev/storybook/basicAuth")),
       autoBranchDeletion: true,
+      environmentVariables: {
+        "NPM_TOKEN": cdk.SecretValue.secretsManager("dev/npm/read-access-token").toString()
+      }
     });
 
     // set the main branch
@@ -23,8 +26,8 @@ export class InfraStack extends cdk.Stack {
     amplifyApp.addCustomRule(amplify.CustomRule.SINGLE_PAGE_APPLICATION_REDIRECT);
 
     // add env variable for npm registry 
-    const npmToken = cdk.SecretValue.secretsManager("dev/npm/read-access-token").toString();
-    amplifyApp.addEnvironment("NPM_TOKEN", npmToken);
+    // const npmToken = cdk.SecretValue.secretsManager("dev/npm/read-access-token").toString();
+    // amplifyApp.addEnvironment("NPM_TOKEN", npmToken);
     
   }
 }
