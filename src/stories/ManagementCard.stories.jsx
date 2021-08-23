@@ -2,6 +2,7 @@ import React from 'react';
 
 import { ManagementCard } from '../lib';
 import Grid from '@material-ui/core/Grid';
+import MenuItem from "@material-ui/core/MenuItem";
 
 export default {
   title: 'Management Card',
@@ -11,11 +12,32 @@ export default {
 
 const Template = (args) => <ManagementCard {...args} />;
 
+const MenuChildren  =  [
+    <MenuItem key={0}>
+      Option 1
+    </MenuItem>,
+    <MenuItem key={1}>
+      Option 2
+    </MenuItem>,
+    <MenuItem key={2}>
+     Option 3
+    </MenuItem>
+  ]
+
+
 export const WithAvatarsAndText = Template.bind({});
 WithAvatarsAndText.args = {
   headerText: 'SALES',
   footerText: '13 Members',
   bodyHeader: 'Massachusetts',
+  onClickAddMember: () => console.log('Add a member'),
+  onHamburgerClick: () => console.log('Action to open hamburger'),
+  menuChildren: MenuChildren,
+  menuProps: {
+    styles: {
+      borderRadius: 8
+    }
+  },
   bodyDescription: 'MA',
   avatars: [
     {
@@ -42,6 +64,9 @@ Install.args = {
   footerText: '22 Members',
   bodyHeader: 'Flow Home Energy',
   bodyDescription: 'AZ, SC, CA, TX',
+  menuChildren: MenuChildren,
+  onClickAddMember: () => console.log('Add a member'),
+  onHamburgerClick: () => console.log('Action to open hamburger'),
   avatars: [
     {
       imgSrc: '',
@@ -55,6 +80,9 @@ export const TextOnly = Template.bind({});
 TextOnly.args = {
   headerText: 'ADMIN',
   footerText: '65 Members',
+  onClickAddMember: () => console.log('Add a member'),
+  onHamburgerClick: () => console.log('Action to open hamburger'),
+  menuChildren: MenuChildren,
   bodyHeader: 'ECEC',
   bodyDescription: 'ST, ST, ST, ST, ST, ST, ST, ST, ST, ST, ST, ST,ST, ST, ST, ST, ST, ST, ST, ST, ST, ST, ST, ST,',
   avatars: [],
@@ -89,4 +117,4 @@ export const CardsInPage = () => {
   );
 };
 
-CardsInPage.args = {}
+CardsInPage.args = {};
