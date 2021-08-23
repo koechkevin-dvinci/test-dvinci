@@ -1,0 +1,17 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+        - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    build:
+      commands:
+        - npm run build-storybook
+  artifacts:
+    baseDirectory: storybook-static
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
