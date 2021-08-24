@@ -106,7 +106,7 @@ const baseOptions = {
     overline: {
       fontWeight: 600
     }
-  }
+  },
 };
 
 const themesOptions = {

@@ -1,29 +1,33 @@
 import React from 'react';
 
-import { ManagementCard } from '../lib';
+import { ManagementCard, Select } from '../lib';
 import Grid from '@material-ui/core/Grid';
-import MenuItem from "@material-ui/core/MenuItem";
+import MenuItem from '@material-ui/core/MenuItem';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import { makeStyles } from '@material-ui/core';
+import { styles } from '../lib/components/ManagementCard/Components';
+import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Search from '../lib/components/Search';
 
 export default {
   title: 'Management Card',
   component: ManagementCard,
-  argTypes: { },
+  argTypes: {},
 };
 
 const Template = (args) => <ManagementCard {...args} />;
 
-const MenuChildren  =  [
-    <MenuItem key={0}>
-      Option 1
-    </MenuItem>,
-    <MenuItem key={1}>
-      Option 2
-    </MenuItem>,
-    <MenuItem key={2}>
-     Option 3
-    </MenuItem>
-  ]
-
+const MenuChildren = [
+  <MenuItem key={0}>Option 1</MenuItem>,
+  <MenuItem key={1}>Option 2</MenuItem>,
+  <MenuItem key={2}>Option 3</MenuItem>,
+];
 
 export const WithAvatarsAndText = Template.bind({});
 WithAvatarsAndText.args = {
@@ -35,8 +39,8 @@ WithAvatarsAndText.args = {
   menuChildren: MenuChildren,
   menuProps: {
     styles: {
-      borderRadius: 8
-    }
+      borderRadius: 8,
+    },
   },
   bodyDescription: 'MA',
   avatars: [
@@ -88,32 +92,74 @@ TextOnly.args = {
   avatars: [],
 };
 
+const CardStyles = {
+  root: {
+    marginBottom: 24,
+  },
+};
+
+const options = [{
+  label: 'All',
+  value: 'All',
+},{
+  label: 'Ten',
+  value: 10,
+},{
+  label: 'Twenty',
+  value: 20,
+},{
+  label: 'Thirty',
+  value: 30,
+}]
 export const CardsInPage = () => {
+  const useStyles = makeStyles({ ...CardStyles });
+  const [value, setValue] = React.useState('All');
+  const onChange = (e) => {
+    setValue(e.target.value);
+  }
+  const classes = useStyles();
   return (
-    <Grid container spacing={3}>
-      <Grid container item xs={12} spacing={3}>
-        <Grid item xs={12} sm={6} md={4}>
-          <TextOnly {...TextOnly.args} />
+    <Box>
+      <Card className={classes.root}>
+        <CardContent>
+          <Grid container spacing={3}>
+            <Grid style={{ display: 'flex', alignItems: 'center'}} item xs={12} sm={6} md={3}>
+              <Search />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Select id={1} value={value} onChange={onChange} options={options} label="Business Sector" />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Select id={2} value={value} onChange={onChange}  options={options} label="Territory" />
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+      <Grid container spacing={3}>
+        <Grid container item xs={12} spacing={3}>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextOnly {...TextOnly.args} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <WithAvatarsAndText {...WithAvatarsAndText.args} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Install {...Install.args} />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <WithAvatarsAndText {...WithAvatarsAndText.args} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Install {...Install.args} />
+        <Grid container item xs={12} spacing={3}>
+          <Grid item xs={12} sm={6} md={4}>
+            <WithAvatarsAndText {...WithAvatarsAndText.args} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Install {...Install.args} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextOnly {...TextOnly.args} />
+          </Grid>
         </Grid>
       </Grid>
-      <Grid container item xs={12} spacing={3}>
-        <Grid item xs={12} sm={6} md={4}>
-          <WithAvatarsAndText {...WithAvatarsAndText.args} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Install {...Install.args} />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <TextOnly {...TextOnly.args} />
-        </Grid>
-      </Grid>
-    </Grid>
+    </Box>
   );
 };
 

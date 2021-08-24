@@ -80,7 +80,7 @@ const ManagementCard = (props) => {
     menuChildren,
     ...restProps
   } = props;
-  const useStyles = makeStyles({ ...styles });
+  const useStyles = makeStyles({ ...styles, ...makeStyle });
   const classes = useStyles();
   return (
     <Card className={classes.root} {...restProps}>
