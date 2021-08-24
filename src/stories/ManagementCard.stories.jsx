@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ManagementCard } from '../lib';
+import { ManagementCard, Select } from '../lib';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import Tabs from '@material-ui/core/Tabs';
@@ -11,9 +11,9 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core';
 import { styles } from '../lib/components/ManagementCard/Components';
 import TextField from '@material-ui/core/TextField';
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Search from '../lib/components/Search';
 
 export default {
   title: 'Management Card',
@@ -97,6 +97,20 @@ const CardStyles = {
     marginBottom: 24,
   },
 };
+
+const options = [{
+  label: 'All',
+  value: 100,
+},{
+  label: 'Ten',
+  value: 10,
+},{
+  label: 'Twenty',
+  value: 20,
+},{
+  label: 'Thirty',
+  value: 30,
+}]
 export const CardsInPage = () => {
   const useStyles = makeStyles({ ...CardStyles });
   const classes = useStyles();
@@ -105,34 +119,14 @@ export const CardsInPage = () => {
       <Card className={classes.root}>
         <CardContent>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6} md={3}>
-              <TextField size="small" id="outlined-error-helper-text" label="Search" fullWidth variant="outlined" />
+            <Grid style={{ display: 'flex', alignItems: 'center'}} item xs={12} sm={6} md={3}>
+              <Search />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <FormControl size="small" style={{ width: '100%'}}>
-              <InputLabel size="small" htmlFor="filled-age-native-simple">Business Sector</InputLabel>
-              <Select defaultValue={""} native label="Business Sector" inputProps={{
-                id: 'filled-age-native-simple',
-              }} fullWidth variant="outlined">
-                <option value={''}/>
-                <option value={10}>Ten</option>
-                <option value={20}>Twenty</option>
-                <option value={30}>Thirty</option>
-              </Select>
-              </FormControl>
+              <Select value={100} options={options} label="Business Sector" />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <FormControl size="small" style={{ width: '100%'}}>
-                <InputLabel size="small" htmlFor="filled-age-native-simple">Business Sector</InputLabel>
-                <Select defaultValue={""} native label="Business Sector" inputProps={{
-                  id: 'filled-age-native-simple',
-                }} fullWidth variant="outlined">
-                  <option value={''}/>
-                  <option value={10}>Ten</option>
-                  <option value={20}>Twenty</option>
-                  <option value={30}>Thirty</option>
-                </Select>
-              </FormControl>
+              <Select value={100} options={options} label="Territory" />
             </Grid>
           </Grid>
         </CardContent>
