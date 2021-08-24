@@ -250,7 +250,15 @@ export const createCustomTheme = (config = {}) => {
       shape: {
         borderRadius: 16
       }
-    })
+    }),
+    overrides: {
+      MuiButton: {
+        root: {
+          borderRadius: 24,
+          textTransform: 'none'
+        }, 
+      }, 
+    },
   }, {
     direction: config.direction
   }));
