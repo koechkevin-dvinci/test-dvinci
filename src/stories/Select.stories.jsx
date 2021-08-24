@@ -7,6 +7,7 @@ export const SelectComponent = Template.bind({});
 SelectComponent.args = {
   label: 'Business Categories',
   native: true,
+  value: 10,
   options: [{
     label: 'One',
     value: 1,

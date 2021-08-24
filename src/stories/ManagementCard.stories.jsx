@@ -100,7 +100,7 @@ const CardStyles = {
 
 const options = [{
   label: 'All',
-  value: 100,
+  value: 'All',
 },{
   label: 'Ten',
   value: 10,
@@ -113,6 +113,10 @@ const options = [{
 }]
 export const CardsInPage = () => {
   const useStyles = makeStyles({ ...CardStyles });
+  const [value, setValue] = React.useState('All');
+  const onChange = (e) => {
+    setValue(e.target.value);
+  }
   const classes = useStyles();
   return (
     <Box>
@@ -123,10 +127,10 @@ export const CardsInPage = () => {
               <Search />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <Select value={100} options={options} label="Business Sector" />
+              <Select id={1} value={value} onChange={onChange} options={options} label="Business Sector" />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <Select value={100} options={options} label="Territory" />
+              <Select id={2} value={value} onChange={onChange}  options={options} label="Territory" />
             </Grid>
           </Grid>
         </CardContent>
