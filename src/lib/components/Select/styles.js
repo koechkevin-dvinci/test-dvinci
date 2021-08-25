@@ -5,14 +5,14 @@ const useStyles = makeStyles((theme) => ({
   },
   cssOutlinedInput: {
     '&$cssFocused $notchedOutline': {
-      borderColor: `${theme.palette.grey['600']} !important`,
+      // borderColor: `${theme.palette.grey['600']} !important`,
     }
   },
 
   cssFocused: {
-    borderColor: `${theme.palette.grey['600']} !important`,
+    // borderColor: `${theme.palette.grey['600']} !important`,
     '>$cssLabel': {
-      color : theme.palette.grey['600']
+      // color : theme.palette.grey['600']
     },
   },
 
@@ -21,10 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   notchedOutline: {
-    borderColor: `${theme.palette.grey['600']} !important`
+    // borderColor: `${theme.palette.grey['600']} !important`
   },
   cssLabel: {
-    color : `${theme.palette.grey['600']} !important`
+    // color : `${theme.palette.grey['600']} !important`
   },
   formControl: {
     margin: theme.spacing(1),

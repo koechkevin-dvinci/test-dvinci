@@ -4,7 +4,9 @@ import React from 'react';
 import Select from '@material-ui/core/Select';
 import useStyles from './styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import OutlinedInput from "@material-ui/core/OutlinedInput";
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import AutoComplete from '@material-ui/lab/AutoComplete';
+import {TextField} from '@material-ui/core';
 
 class Item extends React.Component {
   render() {
@@ -31,11 +33,12 @@ const SelectComponent = (props) => {
       </InputLabel>
       <Select
         size="small"
+        id={id || 'outlined-age-native-simple'}
         displayEmpty
         className={`${className}`}
-        classes= {{
-          icon: classNames.icon
-      }}
+        classes={{
+          icon: classNames.icon,
+        }}
         label={<span className={classNames.cssLabel}>{label}</span>}
         input={
           <OutlinedInput
@@ -59,6 +62,22 @@ const SelectComponent = (props) => {
         {children?.length ? children : childOptions}
       </Select>
     </FormControl>
+  );
+};
+
+export const AutoCompleteComponent = (props) => {
+  const { label, ...restProps } = props;
+  console.log('======>', props)
+  return (
+    <AutoComplete
+      getOptionLabel={(option) => option.label}
+      {...restProps}
+      renderInput={(params) => (
+        <div ref={params.InputProps.ref}>
+          <TextField fullWidth {...params.inputProps} size="small" variant="outlined" label="With categories" />
+        </div>
+      )}
+    />
   );
 };
 

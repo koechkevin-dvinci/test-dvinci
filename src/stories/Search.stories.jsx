@@ -3,8 +3,8 @@ import { Search } from '../lib';
 
 const Template = (args) => <Search {...args} />;
 
-export const SearchComponent = Template.bind({});
-SearchComponent.args = {
+export const Default = Template.bind({});
+Default.args = {
 
 };
 

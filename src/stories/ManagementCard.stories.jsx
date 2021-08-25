@@ -1,19 +1,14 @@
 import React from 'react';
 
-import { ManagementCard, Select } from '../lib';
+import {ManagementCard, Select, TabPanel} from '../lib';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core';
-import { styles } from '../lib/components/ManagementCard/Components';
-import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
 import Search from '../lib/components/Search';
+import { Tabs, Tab, PageHeader } from '../lib';
 
 export default {
   title: 'Management Card',
@@ -120,45 +115,58 @@ export const CardsInPage = () => {
   const classes = useStyles();
   return (
     <Box>
-      <Card className={classes.root}>
-        <CardContent>
+      <Box style={{ padding: 24}}>
+      <PageHeader title="Name of the Partner"  path="dashboard/admin/partners"/>
+      </Box>
+    <Tabs value={1} indicatorColor="primary" textColor="primary">
+      <Tab label="Details" />
+      <Tab label="Teams">
+      </Tab>
+      <Tab label="Members" />
+    </Tabs>
+      <TabPanel index={1} value={1}>
+        <Box>
+          <Card className={classes.root}>
+            <CardContent>
+              <Grid container spacing={3}>
+                <Grid style={{ display: 'flex', alignItems: 'center'}} item xs={12} sm={6} md={3}>
+                  <Search />
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                  <Select id={1} value={value} onChange={onChange} options={options} label="Business Sector" />
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                  <Select id={2} value={value} onChange={onChange}  options={options} label="Territory" />
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
           <Grid container spacing={3}>
-            <Grid style={{ display: 'flex', alignItems: 'center'}} item xs={12} sm={6} md={3}>
-              <Search />
+            <Grid container item xs={12} spacing={3}>
+              <Grid item xs={12} sm={6} md={4}>
+                <TextOnly {...TextOnly.args} />
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <WithAvatarsAndText {...WithAvatarsAndText.args} />
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Install {...Install.args} />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Select id={1} value={value} onChange={onChange} options={options} label="Business Sector" />
+            <Grid container item xs={12} spacing={3}>
+              <Grid item xs={12} sm={6} md={4}>
+                <WithAvatarsAndText {...WithAvatarsAndText.args} />
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Install {...Install.args} />
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <TextOnly {...TextOnly.args} />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Select id={2} value={value} onChange={onChange}  options={options} label="Territory" />
-            </Grid>
           </Grid>
-        </CardContent>
-      </Card>
-      <Grid container spacing={3}>
-        <Grid container item xs={12} spacing={3}>
-          <Grid item xs={12} sm={6} md={4}>
-            <TextOnly {...TextOnly.args} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <WithAvatarsAndText {...WithAvatarsAndText.args} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Install {...Install.args} />
-          </Grid>
-        </Grid>
-        <Grid container item xs={12} spacing={3}>
-          <Grid item xs={12} sm={6} md={4}>
-            <WithAvatarsAndText {...WithAvatarsAndText.args} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Install {...Install.args} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <TextOnly {...TextOnly.args} />
-          </Grid>
-        </Grid>
-      </Grid>
+        </Box>
+      </TabPanel>
     </Box>
   );
 };

@@ -1,5 +1,5 @@
-import ManagementCard from './Components';
+import ManagementCard, { PageHeader } from './Components';
 
-export { ManagementCard };
+export { ManagementCard, PageHeader };
 
 export default ManagementCard;
