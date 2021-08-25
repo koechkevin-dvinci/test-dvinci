@@ -3,8 +3,8 @@ import { Select } from '../lib';
 
 const Template = (args) => <Select {...args} />;
 
-export const SelectComponent = Template.bind({});
-SelectComponent.args = {
+export const Default = Template.bind({});
+Default.args = {
   label: 'Business Categories',
   native: true,
   value: 10,
