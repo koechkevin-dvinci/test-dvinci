@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ManagementCard, Select, TabPanel} from '../lib';
+import {ManagementCard, AutoComplete, TabPanel} from '../lib';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import Box from '@material-ui/core/Box';
@@ -116,7 +116,7 @@ export const CardsInPage = () => {
   return (
     <Box>
       <Box style={{ padding: 24}}>
-      <PageHeader title="Name of the Partner"  path="dashboard/admin/partners"/>
+      <PageHeader title="Name of the Partner"  path="dashboard/admin/partners" primaryText={'Create Team'} secondaryText={'Export'}/>
       </Box>
     <Tabs value={1} indicatorColor="primary" textColor="primary">
       <Tab label="Details" />
@@ -133,10 +133,10 @@ export const CardsInPage = () => {
                   <Search />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                  <Select id={1} value={value} onChange={onChange} options={options} label="Business Sector" />
+                  <AutoComplete id={1} value={value} onChange={onChange} options={options} label="Business Sector" />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                  <Select id={2} value={value} onChange={onChange}  options={options} label="Territory" />
+                  <AutoComplete id={2} value={value} onChange={onChange}  options={options} label="Territory" />
                 </Grid>
               </Grid>
             </CardContent>
@@ -171,4 +171,12 @@ export const CardsInPage = () => {
   );
 };
 
+const HeaderComponentTemplate = (args) => <PageHeader  {...args} />;
+export const HeaderComponent = HeaderComponentTemplate.bind({});
+HeaderComponent.args = {
+  title: 'John Doe',
+  path: 'dashboard/admin/partners',
+  primaryText: 'Create Team',
+  secondaryText: 'Export'
+}
 CardsInPage.args = {};
