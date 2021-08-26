@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '../Button/Button';
 import download from '../../images/downloadIcon.svg';
+import IconButton from '@material-ui/core/IconButton';
 
 export const styles = {
   root: {
@@ -16,12 +17,12 @@ export const styles = {
     fontSize: 16,
   },
   icon: {
-    color: 'grey'
-  }
+    color: 'grey',
+  },
 };
 
 export const PageHeader = (props) => {
-  const { path, title, ...restProps } = props;
+  const { path, title, primaryText, secondaryText, primaryIconProps, secondaryIconProps, ...restProps } = props;
   const splitPaths = path.split('/');
 
   const useStyles = makeStyles(styles);
@@ -47,11 +48,18 @@ export const PageHeader = (props) => {
         </Typography>
       </Grid>
       <Grid item>
-        <Button style={{ marginRight: 16 }} startIcon={<img height={20} alt="" src={download} />} variant="outlined" size="large" color="primary">
-          Export
+        <Button
+          style={{ marginRight: 16 }}
+          startIcon={<img height={20} alt="" src={download} />}
+          variant="outlined"
+          size="large"
+          color="primary"
+          {...secondaryIconProps}
+        >
+          {secondaryText}
         </Button>
-        <Button startIcon={<AddIcon />} variant="contained" size="large" color="primary">
-          Create Team
+        <Button startIcon={<AddIcon />} variant="contained" size="large" color="primary" {...primaryIconProps}>
+          {primaryText}
         </Button>
       </Grid>
     </Grid>
@@ -61,6 +69,8 @@ export const PageHeader = (props) => {
 PageHeader.propTypes = {
   path: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  secondaryText: PropTypes.string.isRequired,
+  primaryText: PropTypes.string.isRequired,
 };
 
 export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuChildren }) => {
@@ -76,7 +86,9 @@ export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuC
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
       <Typography>{headerText}</Typography>
-      <MoreVert onClick={handleClick} />
+      <IconButton color="primary" onClick={handleClick} >
+        <MoreVert />
+      </IconButton>
       <Menu
         id="customized-menu"
         anchorEl={anchorEl}

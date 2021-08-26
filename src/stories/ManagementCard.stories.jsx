@@ -108,15 +108,15 @@ const options = [{
 }]
 export const CardsInPage = () => {
   const useStyles = makeStyles({ ...CardStyles });
-  const [value, setValue] = React.useState('All');
-  const onChange = (e) => {
-    setValue(e.target.value);
+  const [value, setValue] = React.useState({label: "All", value: 'All'});
+  const onChange = (e, value) => {
+    setValue(value);
   }
   const classes = useStyles();
   return (
     <Box>
       <Box style={{ padding: 24}}>
-      <PageHeader title="Name of the Partner"  path="dashboard/admin/partners"/>
+      <PageHeader title="Name of the Partner"  path="dashboard/admin/partners" primaryText={'Create Team'} secondaryText={'Export'}/>
       </Box>
     <Tabs value={1} indicatorColor="primary" textColor="primary">
       <Tab label="Details" />
@@ -133,10 +133,10 @@ export const CardsInPage = () => {
                   <Search />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                  <Select id={1} value={value} onChange={onChange} options={options} label="Business Sector" />
+                  <Select id={'1'} value={value} onChange={onChange} options={options} label="Business Sector" />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                  <Select id={2} value={value} onChange={onChange}  options={options} label="Territory" />
+                  <Select id={'2'} value={value} onChange={onChange}  options={options} label="Territory" />
                 </Grid>
               </Grid>
             </CardContent>
@@ -171,4 +171,12 @@ export const CardsInPage = () => {
   );
 };
 
+const HeaderComponentTemplate = (args) => <PageHeader  {...args} />;
+export const HeaderComponent = HeaderComponentTemplate.bind({});
+HeaderComponent.args = {
+  title: 'John Doe',
+  path: 'dashboard/admin/partners',
+  primaryText: 'Create Team',
+  secondaryText: 'Export'
+}
 CardsInPage.args = {};

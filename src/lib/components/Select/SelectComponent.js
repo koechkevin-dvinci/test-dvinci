@@ -6,7 +6,12 @@ import useStyles from './styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import AutoComplete from '@material-ui/lab/AutoComplete';
-import {TextField} from '@material-ui/core';
+import { TextField } from '@material-ui/core';
+import parse from 'autosuggest-highlight/parse';
+import match from 'autosuggest-highlight/match';
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 class Item extends React.Component {
   render() {
@@ -65,16 +70,34 @@ const SelectComponent = (props) => {
   );
 };
 
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
+
+
+
 export const AutoCompleteComponent = (props) => {
-  const { label, ...restProps } = props;
-  console.log('======>', props)
+  const { label, checkBoxProps, ...restProps } = props;
   return (
     <AutoComplete
       getOptionLabel={(option) => option.label}
+      renderOption={(option, { inputValue }) => {
+        const matches = match(option.label, inputValue);
+        const parts = parse(option.label, matches);
+        return (
+          <>
+           {restProps.multiple && <Checkbox icon={icon} checkedIcon={checkedIcon} style={{ marginRight: 8 }} {...checkBoxProps} />}
+            {parts.map((part, index) => (
+              <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
+                {part.text}
+              </span>
+            ))}
+          </>
+        );
+      }}
       {...restProps}
       renderInput={(params) => (
         <div ref={params.InputProps.ref}>
-          <TextField fullWidth {...params.inputProps} size="small" variant="outlined" label="With categories" />
+          <TextField fullWidth {...params.inputProps} size="small" variant="outlined" label={label} />
         </div>
       )}
     />
