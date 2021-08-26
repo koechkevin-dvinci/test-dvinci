@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '../Button/Button';
 import download from '../../images/downloadIcon.svg';
+import IconButton from '@material-ui/core/IconButton';
 
 export const styles = {
   root: {
@@ -85,7 +86,9 @@ export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuC
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
       <Typography>{headerText}</Typography>
-      <MoreVert onClick={handleClick} />
+      <IconButton color="primary" onClick={handleClick} >
+        <MoreVert />
+      </IconButton>
       <Menu
         id="customized-menu"
         anchorEl={anchorEl}

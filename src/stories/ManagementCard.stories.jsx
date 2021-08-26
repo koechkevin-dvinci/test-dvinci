@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ManagementCard, AutoComplete, TabPanel} from '../lib';
+import {ManagementCard, Select, TabPanel} from '../lib';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import Box from '@material-ui/core/Box';
@@ -108,9 +108,9 @@ const options = [{
 }]
 export const CardsInPage = () => {
   const useStyles = makeStyles({ ...CardStyles });
-  const [value, setValue] = React.useState('All');
-  const onChange = (e) => {
-    setValue(e.target.value);
+  const [value, setValue] = React.useState({label: "All", value: 'All'});
+  const onChange = (e, value) => {
+    setValue(value);
   }
   const classes = useStyles();
   return (
@@ -133,10 +133,10 @@ export const CardsInPage = () => {
                   <Search />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                  <AutoComplete id={1} value={value} onChange={onChange} options={options} label="Business Sector" />
+                  <Select id={'1'} value={value} onChange={onChange} options={options} label="Business Sector" />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                  <AutoComplete id={2} value={value} onChange={onChange}  options={options} label="Territory" />
+                  <Select id={'2'} value={value} onChange={onChange}  options={options} label="Territory" />
                 </Grid>
               </Grid>
             </CardContent>
