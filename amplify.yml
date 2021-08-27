@@ -3,7 +3,8 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm ci
+        - rm -rf package-lock.json node_modules
+        - npm install --force
         - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
     build:
       commands:
