@@ -13,69 +13,69 @@ import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-class Item extends React.Component {
-  render() {
-    const { label, native, data, ...restProps } = this.props;
-    return native ? <option {...restProps}>{label}</option> : <MenuItem {...restProps}>{label}</MenuItem>;
-  }
-}
+// class Item extends React.Component {
+//   render() {
+//     const { label, native, data, ...restProps } = this.props;
+//     return native ? <option {...restProps}>{label}</option> : <MenuItem {...restProps}>{label}</MenuItem>;
+//   }
+// }
 
-const SelectComponent = (props) => {
-  const classNames = useStyles();
-  const { label, children, className, formControlProps, inputProps, id, options = [], value, ...restProps } = props;
-
-  const childOptions = [
-    <Item native={restProps.native} key="None" aria-label="None" label={''} value="" />,
-    ...options.map(({ label, ...itemProps }, index) => (
-      <Item label={label} native={restProps.native} key={index} {...itemProps} />
-    )),
-  ];
-
-  return (
-    <FormControl size="small" variant="outlined" className={classNames.formControl} {...formControlProps}>
-      <InputLabel className={classNames.cssLabel} htmlFor={id || 'outlined-age-native-simple'}>
-        {label}
-      </InputLabel>
-      <Select
-        size="small"
-        id={id || 'outlined-age-native-simple'}
-        displayEmpty
-        className={`${className}`}
-        classes={{
-          icon: classNames.icon,
-        }}
-        label={<span className={classNames.cssLabel}>{label}</span>}
-        input={
-          <OutlinedInput
-            label={<span className={classNames.cssLabel}>{label}</span>}
-            classes={{
-              root: classNames.cssOutlinedInput,
-              focused: classNames.cssFocused,
-              notchedOutline: classNames.notchedOutline,
-            }}
-          />
-        }
-        onChange={console.log}
-        inputProps={{
-          size: 'small',
-          id: id || 'outlined-age-native-simple',
-          ...inputProps,
-        }}
-        value={value || ''}
-        {...restProps}
-      >
-        {children?.length ? children : childOptions}
-      </Select>
-    </FormControl>
-  );
-};
+// const SelectComponent = (props) => {
+//   const classNames = useStyles();
+//   const { label, children, className, formControlProps, inputProps, id, options = [], value, ...restProps } = props;
+//
+//   const childOptions = [
+//     <Item native={restProps.native} key="None" aria-label="None" label={''} value="" />,
+//     ...options.map(({ label, ...itemProps }, index) => (
+//       <Item label={label} native={restProps.native} key={index} {...itemProps} />
+//     )),
+//   ];
+//
+//   return (
+//     <FormControl size="small" variant="outlined" className={classNames.formControl} {...formControlProps}>
+//       <InputLabel className={classNames.cssLabel} htmlFor={id || 'outlined-age-native-simple'}>
+//         {label}
+//       </InputLabel>
+//       <Select
+//         size="small"
+//         id={id || 'outlined-age-native-simple'}
+//         displayEmpty
+//         className={`${className}`}
+//         classes={{
+//           icon: classNames.icon,
+//         }}
+//         label={<span className={classNames.cssLabel}>{label}</span>}
+//         input={
+//           <OutlinedInput
+//             label={<span className={classNames.cssLabel}>{label}</span>}
+//             classes={{
+//               root: classNames.cssOutlinedInput,
+//               focused: classNames.cssFocused,
+//               notchedOutline: classNames.notchedOutline,
+//             }}
+//           />
+//         }
+//         onChange={console.log}
+//         inputProps={{
+//           size: 'small',
+//           id: id || 'outlined-age-native-simple',
+//           ...inputProps,
+//         }}
+//         value={value || ''}
+//         {...restProps}
+//       >
+//         {children?.length ? children : childOptions}
+//       </Select>
+//     </FormControl>
+//   );
+// };
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 
 
-export const AutoCompleteComponent = (props) => {
+export const SelectComponent = (props) => {
   const { label, checkBoxProps, ...restProps } = props;
   return (
     <AutoComplete

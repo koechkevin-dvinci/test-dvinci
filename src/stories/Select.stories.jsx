@@ -1,13 +1,11 @@
 import React from 'react';
-import { AutoComplete, Select, parse, match } from '../lib';
+import { Select } from '../lib';
 
 const Template = (args) => <Select {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   label: 'Business Categories',
-  native: true,
-  value: 10,
   options: [
     {
       label: 'One',
@@ -28,7 +26,7 @@ Default.args = {
   ],
 };
 
-const AutoCompleteFunc = (args) => <AutoComplete {...args} />;
+const AutoCompleteFunc = (args) => <Select {...args} />;
 export const MoreOptions = AutoCompleteFunc.bind({});
 MoreOptions.args = {
   open: true,
@@ -50,7 +48,7 @@ MoreOptions.args = {
       value: 30,
     },
   ],
-  id: '1',
+  id: '11',
   label: 'Country',
   size: 'small',
 };
