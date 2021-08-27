@@ -23,6 +23,7 @@
   "dependencies": {
     "@aws-cdk/aws-amplify": "^1.119.0",
     "@aws-cdk/core": "1.119.0",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "source-map-support": "^0.5.16"
   }
 }
