@@ -1,5 +1,5 @@
 import React from 'react';
-import AutoComplete from '@material-ui/lab/AutoComplete';
+import AutoComplete from '@material-ui/lab/Autocomplete';
 import { TextField } from '@material-ui/core';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
