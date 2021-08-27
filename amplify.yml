@@ -3,7 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm ci
+        - npm install --legacy-peer-deps
         - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
     build:
       commands:
