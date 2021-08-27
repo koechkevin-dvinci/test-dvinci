@@ -7,6 +7,7 @@ frontend:
         - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
     build:
       commands:
+        - npm install @material-ui/lab@4.0.0-alpha.60
         - npm run build-storybook
   artifacts:
     baseDirectory: storybook-static
