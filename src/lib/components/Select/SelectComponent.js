@@ -1,10 +1,4 @@
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
 import React from 'react';
-import Select from '@material-ui/core/Select';
-import useStyles from './styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import AutoComplete from '@material-ui/lab/AutoComplete';
 import { TextField } from '@material-ui/core';
 import parse from 'autosuggest-highlight/parse';
