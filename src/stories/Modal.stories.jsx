@@ -1,7 +1,7 @@
 import React from 'react';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
-import { Modal } from '../../../lib';
+import { Modal } from '../lib';
 
 export default {
   component: Modal,
