@@ -31,3 +31,4 @@ yarn-error.log*
 
 # for cdk
 cdk.out/
+.npmrc

@@ -79,29 +79,30 @@ const baseOptions = {
       fontWeight: 600
     },
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
+    fontSize: 18,
     h1: {
       fontWeight: 600,
-      fontSize: '3.5rem'
+      fontSize: 28
     },
     h2: {
       fontWeight: 600,
-      fontSize: '3rem'
+      fontSize: 26
     },
     h3: {
       fontWeight: 600,
-      fontSize: '2.25rem'
+      fontSize: 24
     },
     h4: {
       fontWeight: 600,
-      fontSize: '2rem'
+      fontSize: 22
     },
     h5: {
       fontWeight: 600,
-      fontSize: '1.5rem'
+      fontSize: 20
     },
     h6: {
       fontWeight: 600,
-      fontSize: '1.125rem'
+      fontSize: 18
     },
     overline: {
       fontWeight: 600
@@ -256,8 +257,8 @@ export const createCustomTheme = (config = {}) => {
         root: {
           borderRadius: 24,
           textTransform: 'none'
-        }, 
-      }, 
+        },
+      },
     },
   }, {
     direction: config.direction

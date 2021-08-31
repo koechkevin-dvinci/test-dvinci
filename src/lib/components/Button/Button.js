@@ -7,7 +7,7 @@ const Button = (props) => {
   const { children, classes, ...restProps } = props;
 
   return (
-    <MUIButton className={classes.button} {...restProps}>
+    <MUIButton className={classes.button} classes={classes} {...restProps}>
       {children}
     </MUIButton>
   );

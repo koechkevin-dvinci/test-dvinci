@@ -7,6 +7,7 @@ import { Tabs, Tab, TabPanel } from './components/Tabs';
 import { SelectComponent } from './components/Select/SelectComponent';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
+import { AddNewMember } from './components/AddNewMembers';
 
 export {
   Button,
@@ -17,5 +18,5 @@ export {
   Tab,
   TabPanel,
   PageHeader,
-  SelectComponent as Select, parse, match,
+  SelectComponent as Select, parse, match, AddNewMember,
 };
