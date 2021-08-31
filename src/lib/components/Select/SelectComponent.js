@@ -6,6 +6,7 @@ import match from 'autosuggest-highlight/match';
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import useStyles from './styles';
 
 // class Item extends React.Component {
 //   render() {
@@ -67,10 +68,11 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-
-
+// export const CustomTextField =
 export const SelectComponent = (props) => {
-  const { label, checkBoxProps, ...restProps } = props;
+  const { label, checkBoxProps, size, ...restProps } = props;
+  const classNames = useStyles();
+  console.log('========>', classNames.root)
   return (
     <AutoComplete
       getOptionLabel={(option) => option.label}
@@ -79,7 +81,9 @@ export const SelectComponent = (props) => {
         const parts = parse(option.label, matches);
         return (
           <>
-           {restProps.multiple && <Checkbox icon={icon} checkedIcon={checkedIcon} style={{ marginRight: 8 }} {...checkBoxProps} />}
+            {restProps.multiple && (
+              <Checkbox icon={icon} checkedIcon={checkedIcon} style={{ marginRight: 8 }} {...checkBoxProps} />
+            )}
             {parts.map((part, index) => (
               <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
                 {part.text}
@@ -91,7 +95,20 @@ export const SelectComponent = (props) => {
       {...restProps}
       renderInput={(params) => (
         <div ref={params.InputProps.ref}>
-          <TextField fullWidth {...params.inputProps} size="small" variant="outlined" label={label} />
+          <TextField
+            placeholder={restProps.placeholder}
+            fullWidth
+            {...params.inputProps}
+            InputProps={{
+              classes: {
+                // notchedOutline: classNames.notchedOutline,
+                root: classNames.root
+              },
+            }}
+            size={size || 'small'}
+            variant="outlined"
+            label={label}
+          />
         </div>
       )}
     />
