@@ -6,6 +6,12 @@ const Template = (args) => <AddNewMember {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   open: true,
+  hideSecondaryAction: false,
+  addButtonProps: {},
+  selectProps: {},
+  onRemove: console.log,
+  onMakeTeamManager: console.log,
+  onAddMember: console.log,
   options: [{
     label: 'Mindy Harshville', value: 1,
   },{
