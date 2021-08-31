@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import AutoComplete from '@material-ui/lab/Autocomplete';
 import { TextField } from '@material-ui/core';
 import parse from 'autosuggest-highlight/parse';
@@ -8,79 +8,29 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import useStyles from './styles';
 
-// class Item extends React.Component {
-//   render() {
-//     const { label, native, data, ...restProps } = this.props;
-//     return native ? <option {...restProps}>{label}</option> : <MenuItem {...restProps}>{label}</MenuItem>;
-//   }
-// }
-
-// const SelectComponent = (props) => {
-//   const classNames = useStyles();
-//   const { label, children, className, formControlProps, inputProps, id, options = [], value, ...restProps } = props;
-//
-//   const childOptions = [
-//     <Item native={restProps.native} key="None" aria-label="None" label={''} value="" />,
-//     ...options.map(({ label, ...itemProps }, index) => (
-//       <Item label={label} native={restProps.native} key={index} {...itemProps} />
-//     )),
-//   ];
-//
-//   return (
-//     <FormControl size="small" variant="outlined" className={classNames.formControl} {...formControlProps}>
-//       <InputLabel className={classNames.cssLabel} htmlFor={id || 'outlined-age-native-simple'}>
-//         {label}
-//       </InputLabel>
-//       <Select
-//         size="small"
-//         id={id || 'outlined-age-native-simple'}
-//         displayEmpty
-//         className={`${className}`}
-//         classes={{
-//           icon: classNames.icon,
-//         }}
-//         label={<span className={classNames.cssLabel}>{label}</span>}
-//         input={
-//           <OutlinedInput
-//             label={<span className={classNames.cssLabel}>{label}</span>}
-//             classes={{
-//               root: classNames.cssOutlinedInput,
-//               focused: classNames.cssFocused,
-//               notchedOutline: classNames.notchedOutline,
-//             }}
-//           />
-//         }
-//         onChange={console.log}
-//         inputProps={{
-//           size: 'small',
-//           id: id || 'outlined-age-native-simple',
-//           ...inputProps,
-//         }}
-//         value={value || ''}
-//         {...restProps}
-//       >
-//         {children?.length ? children : childOptions}
-//       </Select>
-//     </FormControl>
-//   );
-// };
-
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-// export const CustomTextField =
 export const SelectComponent = (props) => {
-  const { label, checkBoxProps, size, ...restProps } = props;
+  const { label, checkBoxProps, size, shrink, ...restProps } = props;
   const classNames = useStyles();
-  console.log('========>', classNames.root)
+
   return (
     <AutoComplete
+      forcePopupIcon={'auto'}
       getOptionLabel={(option) => option.label}
+      size={size || 'small'}
+      classes={{
+        root: classNames.root,
+        clearIndicator: classNames.clearIndicator,
+        popupIndicator: classNames.popupIndicator,
+        popper: classNames.popper
+      }}
       renderOption={(option, { inputValue }) => {
         const matches = match(option.label, inputValue);
         const parts = parse(option.label, matches);
         return (
-          <>
+          <Fragment>
             {restProps.multiple && (
               <Checkbox icon={icon} checkedIcon={checkedIcon} style={{ marginRight: 8 }} {...checkBoxProps} />
             )}
@@ -89,7 +39,7 @@ export const SelectComponent = (props) => {
                 {part.text}
               </span>
             ))}
-          </>
+          </Fragment>
         );
       }}
       {...restProps}
@@ -98,16 +48,11 @@ export const SelectComponent = (props) => {
           <TextField
             placeholder={restProps.placeholder}
             fullWidth
-            {...params.inputProps}
-            InputProps={{
-              classes: {
-                // notchedOutline: classNames.notchedOutline,
-                root: classNames.root
-              },
-            }}
-            size={size || 'small'}
             variant="outlined"
             label={label}
+            {...params.inputProps}
+            {...params}
+            InputLabelProps={{ shrink }}
           />
         </div>
       )}

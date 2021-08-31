@@ -133,10 +133,10 @@ export const CardsInPage = () => {
                   <Search />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                  <Select id={'1'} value={value} onChange={onChange} options={options} label="Business Sector" />
+                  <Select id={'1'} size="small" value={value} onChange={onChange} options={options} label="Business Sector" />
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
-                  <Select id={'2'} value={value} onChange={onChange}  options={options} label="Territory" />
+                  <Select size="small" id={'2'} value={value} onChange={onChange}  options={options} label="Territory" />
                 </Grid>
               </Grid>
             </CardContent>
