@@ -7,64 +7,88 @@ import { makeStyles } from '@material-ui/core';
 import { ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, List } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import AddIcon from '@material-ui/icons/Add'
 import PeopleIcon from '@material-ui/icons/People';
 import styles from './styles';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(styles);
 
 export const ListComponent = (props) => {
   const classes = useStyles();
 
-  const { className, imgSrc, displayName, onMakeTeamManager, onRemove, hideSecondaryAction, ...restProps } = props;
+  const {
+    className,
+    imgSrc,
+    displayName,
+    onMakeTeamManager,
+    onRemove,
+    hideSecondaryAction,
+    labelTag,
+    isTeamManager,
+    disabled,
+    showAddIcon,
+    onClickPlusIcon,
+    ...restProps
+  } = props;
   const rootClassName = `${classes.listItem} ${className || ''}`;
   let splittedName = displayName.split(/[\s_\-@]/g);
   if (splittedName.length < 2) {
     splittedName[0] = displayName;
     splittedName[1] = displayName.substr(1);
   }
-  const [hovered, setHovered] = useState({ remove: false, makeTeamManager: false });
-
-  const onHover = (name) => {
-    setHovered((val) => ({ ...val, [name]: true }));
-  };
-
-  const onMouseLeave = (name) => {
-    setHovered((val) => ({ ...val, [name]: false }));
-  };
 
   const imgAltName = (splittedName?.[0]?.[0] + splittedName?.[1]?.[0])?.toUpperCase();
+  const avatarClass = disabled ? 'disabledAvatar': (isTeamManager ? 'teamManagerAvatar': 'avatar');
   return (
-    <ListItem className={rootClassName} {...restProps}>
+    <ListItem className={rootClassName} disabled={disabled} {...restProps}>
       <ListItemAvatar>
-        <Avatar alt={imgAltName} className={classes.avatar} src={imgSrc}>
+        <Avatar alt={imgAltName} className={`${classes.avatar} ${classes[avatarClass]}`} src={imgSrc}>
           {!imgSrc && imgAltName}
         </Avatar>
       </ListItemAvatar>
-      <ListItemText primary={displayName} />
+      <ListItemText
+        primary={
+          <Box display="flex" alignItems="center">
+            <Typography>{displayName}</Typography>
+            <Typography style={{ marginLeft: 16, fontSize: 12 }} color="textSecondary" variant="body2">
+              {labelTag}
+            </Typography>
+          </Box>
+        }
+      />
       {!hideSecondaryAction && (
         <ListItemSecondaryAction>
           <IconButton
-            onMouseEnter={() => onHover('makeTeamManager')}
-            onMouseLeave={() => onMouseLeave('makeTeamManager')}
             onClick={onMakeTeamManager}
+            disabled={disabled}
+            color={isTeamManager ? 'primary': undefined}
             classes={{
-              root: classes.icon
+              root: !isTeamManager ? classes.icon: undefined,
             }}
-            color={hovered.makeTeamManager ? 'primary' : undefined}
           >
             <PeopleIcon />
           </IconButton>
-          <IconButton
-            onMouseEnter={() => onHover('remove')}
-            onMouseLeave={() => onMouseLeave('remove')}
+          {!showAddIcon && <IconButton
+            disabled={disabled}
             onClick={onRemove}
-            color={hovered.remove ? 'primary' : undefined}
             classes={{
-              root: classes.icon
+              root: classes.icon,
             }}
           >
             <CloseIcon />
-          </IconButton>
+          </IconButton>}
+          { showAddIcon &&
+            <IconButton
+              disabled={disabled}
+              onClick={onClickPlusIcon}
+              classes={{
+                root: classes.icon,
+              }}
+            >
+              <AddIcon />
+            </IconButton>
+          }
         </ListItemSecondaryAction>
       )}
     </ListItem>
@@ -81,10 +105,13 @@ const AddNewMember = (props) => {
     selectProps,
     hideSecondaryAction,
     onAddMember,
+    onClickPlusIcon,
     ...restProps
   } = props;
   const classes = useStyles();
   const [selectedUser, setSelectedUser] = useState();
+  const [placeholder, setPlaceHolder] = useState(() => selectProps.placeholder || 'Type name or email');
+
   return (
     <Modal okText="Done" title="Add members" {...restProps}>
       <Box className={classes.body}>
@@ -94,33 +121,47 @@ const AddNewMember = (props) => {
               size="medium"
               shrink
               autoHighlight
-              placeholder="Type name or email"
               label="Name / Email *"
               options={options}
               onChange={(_, value) => setSelectedUser(value)}
+              onFocus={() => setPlaceHolder('')}
+              onBlur={() => setPlaceHolder(selectProps.placeholder || 'Type name or email')}
               {...selectProps}
+              placeholder={placeholder}
             />
           </Box>
-          <Button disabled={!selectedUser} style={{ marginLeft: 16 }} color="primary" variant="outlined" onClick={() => onAddMember(selectedUser)} {...addButtonProps}>
+          <Button
+            disabled={!selectedUser}
+            style={{ marginLeft: 16 }}
+            color="primary"
+            variant="outlined"
+            onClick={() => onAddMember(selectedUser)}
+            {...addButtonProps}
+          >
             Add
           </Button>
         </Box>
-        <Box className={classes.listMembers}>
+        {members.length> 0 && <Box className={classes.listMembers}>
           <List subheader="MEMBERS">
             {members.map((member, index) => {
               return (
                 <ListComponent
-                  hideSecondaryAction={hideSecondaryAction}
+                  hideSecondaryAction={member.hideSecondaryAction}
                   onRemove={() => onRemove(member)}
                   onMakeTeamManager={() => onMakeTeamManager(member)}
+                  onClickPlusIcon={() =>onClickPlusIcon(member)}
                   displayName={member.label}
-                  imgSrc=""
+                  imgSrc={member.imgSrc}
+                  labelTag={member.labelTag}
+                  disabled={member.disabled}
                   key={index}
+                  showAddIcon={member.showAddIcon}
+                  isTeamManager={member.isTeamManager}
                 />
               );
             })}
           </List>
-        </Box>
+        </Box>}
       </Box>
     </Modal>
   );
