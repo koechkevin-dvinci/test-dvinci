@@ -2,9 +2,7 @@ import React from 'react';
 import { AddNewMember } from '../lib';
 
 const Template = (args) => <AddNewMember {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
+const props = {
   open: true,
   okText: 'Finish',
   hideSecondaryAction: false,
@@ -38,6 +36,8 @@ Default.args = {
     label: 'mark_brown@company.com', value: 11,
   }]
 };
+export const Default = Template.bind({});
+Default.args = props;
 
 export default {
   title: 'Add or Edit Members Component',
