@@ -9,6 +9,8 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core';
 import Search from '../lib/components/Search';
 import { Tabs, Tab, PageHeader } from '../lib';
+import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
 
 export default {
   title: 'Management Card',
@@ -19,9 +21,15 @@ export default {
 const Template = (args) => <ManagementCard {...args} />;
 
 const MenuChildren = [
-  <MenuItem key={0}>Option 1</MenuItem>,
-  <MenuItem key={1}>Option 2</MenuItem>,
-  <MenuItem key={2}>Option 3</MenuItem>,
+  <MenuItem key={0}>Edit Details</MenuItem>,
+  <Divider key={11} />,
+  <MenuItem key={1}>Edit Members</MenuItem>,
+  <Divider key={111} />,
+  <MenuItem key={2}>
+    <Typography color="secondary">
+    De-Activate
+    </Typography>
+  </MenuItem>,
 ];
 
 export const WithAvatarsAndText = Template.bind({});
