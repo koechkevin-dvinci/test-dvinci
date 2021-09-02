@@ -192,6 +192,12 @@ export const CardsInPage = () => {
               </Grid>
             </Grid>
           </Grid>
+          <Divider style={{ margin: '16px 0' }} />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6} md={4}>
+              <Disabled {...Disabled.args} />
+            </Grid>
+          </Grid>
         </Box>
       </TabPanel>
     </Box>
