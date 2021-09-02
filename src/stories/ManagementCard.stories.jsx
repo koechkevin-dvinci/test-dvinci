@@ -95,6 +95,25 @@ TextOnly.args = {
   avatars: [],
 };
 
+export const Disabled = Template.bind({});
+Disabled.args = {
+  headerText: 'DESIGN',
+  disabled: true,
+  footerText: '22 Members',
+  bodyHeader: 'Juary Goncalves',
+  bodyDescription: 'All territories',
+  menuChildren: MenuChildren,
+  onActivate: () => (Disabled.args.disabled = !Disabled.args.disabled),
+  onClickAddMember: () => console.log('Add a member'),
+  onHamburgerClick: () => console.log('Action to open hamburger'),
+  avatars: [
+    {
+      imgSrc: '',
+      name: 'Tim Sherwood',
+      altIcon: 'TM',
+    },
+  ],
+};
 const CardStyles = {
   root: {
     marginBottom: 24,
