@@ -6,20 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '../Button/Button';
 import download from '../../images/downloadIcon.svg';
 import IconButton from '@material-ui/core/IconButton';
-
-export const styles = {
-  root: {
-    maxWidth: 362,
-  },
-  head: {
-    textTransform: 'capitalize',
-    marginRight: 16,
-    fontSize: 16,
-  },
-  icon: {
-    color: 'grey',
-  },
-};
+import { styles } from './styles';
 
 export const PageHeader = (props) => {
   const { path, title, primaryText, secondaryText, primaryIconProps, secondaryIconProps, ...restProps } = props;
@@ -73,7 +60,7 @@ PageHeader.propTypes = {
   primaryText: PropTypes.string.isRequired,
 };
 
-export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuChildren }) => {
+export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuChildren, disabled, onActivate }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -84,11 +71,14 @@ export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuC
     setAnchorEl(null);
   };
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center">
+    <Box display="flex" justifyContent="space-between" style={{ height: 28 }} alignItems="center">
       <Typography>{headerText}</Typography>
-      <IconButton color="primary" onClick={handleClick} >
+      {!disabled && <IconButton color="primary" onClick={handleClick}>
         <MoreVert />
-      </IconButton>
+      </IconButton>}
+      {
+        disabled && <Button onClick={onActivate} color="primary" variant="outlined">Activate</Button>
+      }
       <Menu
         id="customized-menu"
         anchorEl={anchorEl}
@@ -103,10 +93,10 @@ export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuC
   );
 };
 
-export const BodyComponent = ({ header, description }) => {
+export const BodyComponent = ({ header, description, disabled }) => {
   return (
     <Box>
-      <Typography variant="h6">{header}</Typography>
+      <Typography color={disabled? "textSecondary": undefined} variant="h6">{header}</Typography>
       <Typography color="textSecondary" variant="body2">
         {description}
       </Typography>
@@ -115,20 +105,26 @@ export const BodyComponent = ({ header, description }) => {
 };
 
 export const FooterComponent = (props) => {
-  const { text, avatars = [], onAddMember } = props;
+  const { text, avatars = [], onAddMember, disabled } = props;
+  const useStyles = makeStyles(styles);
+  const classes = useStyles();
   return (
     <Box style={{ flex: 1 }} display="flex" justifyContent="space-between" alignItems="center">
       <Box display="flex" alignItems="center" style={{ flex: 1 }}>
         {avatars.map((user, index) => {
           return (
-            <Avatar style={{ marginRight: 8 }} key={index} alt={user.altIcon} src={user.imgSrc}>
+            <Avatar className={disabled ? classes.disabledAvatar: classes.avatar} style={{ marginRight: 8 }} key={index} alt={user.altIcon} src={user.imgSrc}>
               {!user.imgSrc && user.altIcon}
             </Avatar>
           );
         })}
         <Typography>{text}</Typography>
       </Box>
+      <IconButton size="small" disabled={disabled}>
+        <Typography color="textSecondary">
       <AddIcon onClick={onAddMember} />
+        </Typography>
+      </IconButton>
     </Box>
   );
 };
@@ -144,30 +140,43 @@ const ManagementCard = (props) => {
     onHamburgerClick,
     menuProps,
     menuChildren,
+    disabled,
+    onActivate,
     ...restProps
   } = props;
-  const useStyles = makeStyles({ ...styles, ...makeStyle });
+
+  const makeThemeFunction = (theme) => {
+    if (typeof makeStyles === 'function') {
+      return { ...styles(theme), ...makeStyles(theme) };
+    }
+    return { ...styles(theme), ...makeStyles };
+  };
+
+  const useStyles = makeStyles(makeThemeFunction);
   const classes = useStyles();
   return (
-    <Card className={classes.root} {...restProps}>
+    <Card variant={disabled ? 'outlined': undefined} className={disabled? classes.disabled :classes.root} {...restProps}>
       <CardHeader
+        style={{ paddingBottom: 0, }}
         subheader={
           <HeaderComponent
             menuChildren={menuChildren}
             menuProps={menuProps}
             onHamburgerClick={onHamburgerClick}
             headerText={headerText}
+            disabled={disabled}
+            onActivate={onActivate}
           />
         }
       />
-      <CardContent style={{ minHeight: 86 }}>
-        <BodyComponent header={bodyHeader} description={bodyDescription} />
+      <CardContent style={{ minHeight: 86, paddingTop: 0 }}>
+        <BodyComponent disabled={disabled} header={bodyHeader} description={bodyDescription} />
       </CardContent>
       <Divider />
       <Box display="flex" alignItems="center">
         <CardHeader
-          style={{ flex: 1, minHeight: 72 }}
-          subheader={<FooterComponent onAddMember={onClickAddMember} avatars={avatars} text={footerText} />}
+          style={{ flex: 1, height: 64 }}
+          subheader={<FooterComponent disabled={disabled} onAddMember={onClickAddMember} avatars={avatars} text={footerText} />}
         />
       </Box>
     </Card>

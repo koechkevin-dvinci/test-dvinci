@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import AutoComplete from '@material-ui/lab/Autocomplete';
 import { TextField } from '@material-ui/core';
 import parse from 'autosuggest-highlight/parse';
@@ -7,12 +7,13 @@ import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import useStyles from './styles';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export const SelectComponent = (props) => {
-  const { label, checkBoxProps, size, shrink, ...restProps } = props;
+  const { label, checkBoxProps, size, shrink, classes, ...restProps } = props;
   const classNames = useStyles();
 
   return (
@@ -24,7 +25,8 @@ export const SelectComponent = (props) => {
         root: classNames.root,
         clearIndicator: classNames.clearIndicator,
         popupIndicator: classNames.popupIndicator,
-        popper: classNames.popper
+        popper: classNames.popper,
+        ...classes
       }}
       renderOption={(option, { inputValue }) => {
         const matches = match(option.label, inputValue);
@@ -34,6 +36,7 @@ export const SelectComponent = (props) => {
             {restProps.multiple && (
               <Checkbox icon={icon} checkedIcon={checkedIcon} style={{ marginRight: 8 }} {...checkBoxProps} />
             )}
+            {option.icon && <span style={{ marginRight: 16 }}>{option.icon}</span>}
             {parts.map((part, index) => (
               <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
                 {part.text}
@@ -52,7 +55,18 @@ export const SelectComponent = (props) => {
             label={label}
             {...params.inputProps}
             {...params}
-            InputLabelProps={{ shrink }}
+            InputProps={{
+              ...params.InputProps,
+              ...restProps.InputProps,
+              startAdornment: restProps.options.find(({ label }) => params.inputProps.value === label)?.icon ? (
+                <InputAdornment position="start">
+                  {restProps.options.find(({ label }) => params.inputProps.value === label)?.icon}
+                </InputAdornment>
+              ) : undefined,
+            }}
+            InputLabelProps={{
+              shrink,
+            }}
           />
         </div>
       )}

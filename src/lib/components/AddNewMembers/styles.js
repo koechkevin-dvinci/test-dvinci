@@ -14,10 +14,20 @@ const styles = (theme) => ({
     fontSize: 14,
     fontWeight: 400,
   },
+  disabledAvatar: {
+    backgroundColor: 'transparent',
+    border: `1px solid ${theme.palette.grey['600']}`
+  },
+  teamManagerAvatar: {
+    backgroundColor: theme.palette.primary.main
+  },
   icon: {
     color: 'rgba(145, 158, 171, 0.86)',
     '&:hover': {
       color: theme.palette.primary.main
+    },
+    '&:disabled': {
+      color: 'rgba(145, 158, 171, 0.86)',
     }
   },
   listItem: {

@@ -9,6 +9,8 @@ import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core';
 import Search from '../lib/components/Search';
 import { Tabs, Tab, PageHeader } from '../lib';
+import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
 
 export default {
   title: 'Management Card',
@@ -19,9 +21,15 @@ export default {
 const Template = (args) => <ManagementCard {...args} />;
 
 const MenuChildren = [
-  <MenuItem key={0}>Option 1</MenuItem>,
-  <MenuItem key={1}>Option 2</MenuItem>,
-  <MenuItem key={2}>Option 3</MenuItem>,
+  <MenuItem key={0}>Edit Details</MenuItem>,
+  <Divider key={11} />,
+  <MenuItem key={1}>Edit Members</MenuItem>,
+  <Divider key={111} />,
+  <MenuItem key={2}>
+    <Typography color="secondary">
+    De-Activate
+    </Typography>
+  </MenuItem>,
 ];
 
 export const WithAvatarsAndText = Template.bind({});
@@ -87,6 +95,25 @@ TextOnly.args = {
   avatars: [],
 };
 
+export const Disabled = Template.bind({});
+Disabled.args = {
+  headerText: 'DESIGN',
+  disabled: true,
+  footerText: '22 Members',
+  bodyHeader: 'Juary Goncalves',
+  bodyDescription: 'All territories',
+  menuChildren: MenuChildren,
+  onActivate: () => (Disabled.args.disabled = !Disabled.args.disabled),
+  onClickAddMember: () => console.log('Add a member'),
+  onHamburgerClick: () => console.log('Action to open hamburger'),
+  avatars: [
+    {
+      imgSrc: '',
+      name: 'Tim Sherwood',
+      altIcon: 'TM',
+    },
+  ],
+};
 const CardStyles = {
   root: {
     marginBottom: 24,
@@ -163,6 +190,12 @@ export const CardsInPage = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <TextOnly {...TextOnly.args} />
               </Grid>
+            </Grid>
+          </Grid>
+          <Divider style={{ margin: '16px 0' }} />
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6} md={4}>
+              <Disabled {...Disabled.args} />
             </Grid>
           </Grid>
         </Box>
