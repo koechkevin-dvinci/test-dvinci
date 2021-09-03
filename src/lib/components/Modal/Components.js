@@ -17,13 +17,13 @@ const Modal = (props) => {
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth {...restProps}>
         <DialogTitle id="form-dialog-title">{title}</DialogTitle>
         <Divider />
-        <DialogContent>{children}</DialogContent>
+        <DialogContent className={classes.modalContent}>{children}</DialogContent>
         <Divider />
         <DialogActions className={classes.modalFooter}>
-          <Button onClick={onCancel} color="primary" size="large">
+          <Button onClick={onCancel} color="primary" size="medium">
             {cancelText || 'Cancel'}
           </Button>
-          <Button onClick={onOk} color="primary" variant="contained" size="large">
+          <Button onClick={onOk} color="primary" variant="contained" size="medium">
             {okText || 'Submit'}
           </Button>
         </DialogActions>
