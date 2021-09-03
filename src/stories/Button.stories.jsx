@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '../../../lib';
+import { Button } from '../lib';
 import Grid from '@material-ui/core/Grid';
 
 export default {
