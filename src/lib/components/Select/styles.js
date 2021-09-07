@@ -6,9 +6,7 @@ const useStyles = makeStyles((theme) => ({
       borderColor: 'rgba(145, 158, 171, 0.24)',
     },
   },
-  clearIndicator: {
-    display: 'none'
-  },
+
   popupIndicator: {
     color: 'rgba(145, 158, 171, 0.86)'
   },
