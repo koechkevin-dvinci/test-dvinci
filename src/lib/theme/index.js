@@ -117,12 +117,6 @@ const baseOptions = {
         },
       },
     },
-    MuiCheckbox: {
-      disabled: {
-        color: 'rgba(145, 158, 171, 0.86)',
-        borderColor: 'rgba(145, 158, 171, 0.86)',
-      },
-    },
     MuiIconButton: {
       root: {
         '&$disabled': {

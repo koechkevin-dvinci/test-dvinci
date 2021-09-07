@@ -14,6 +14,9 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(styles);
 
+const getAltName = (splittedName = ['', '']) => {
+  return (splittedName[0][0] + splittedName[1][0]).toUpperCase();
+}
 export const ListComponent = (props) => {
   const classes = useStyles();
 
@@ -34,11 +37,11 @@ export const ListComponent = (props) => {
   const rootClassName = `${classes.listItem} ${className || ''}`;
   let splittedName = displayName.split(/[\s_\-@]/g);
   if (splittedName.length < 2) {
-    splittedName[0] = displayName;
-    splittedName[1] = displayName.substr(1);
+    splittedName[0] = displayName || '';
+    splittedName[1] = displayName.substr(1) || '';
   }
 
-  const imgAltName = (splittedName?.[0]?.[0] + splittedName?.[1]?.[0])?.toUpperCase();
+  const imgAltName = getAltName(splittedName);
   const avatarClass = disabled ? 'disabledAvatar': (isTeamManager ? 'teamManagerAvatar': 'avatar');
   return (
     <ListItem className={rootClassName} disabled={disabled} {...restProps}>
