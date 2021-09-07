@@ -21,7 +21,7 @@ const adornment = (icon) => {
 };
 
 export const SelectComponent = (props) => {
-  const { label, checkBoxProps, size, shrink, classes, ...restProps } = props;
+  const { label, checkBoxProps, size, shrink, classes, disabled, ...restProps } = props;
   const classNames = useStyles();
 
   return (
@@ -65,6 +65,7 @@ export const SelectComponent = (props) => {
         );
       }}
       {...restProps}
+      disabled={disabled}
       renderInput={(params) => (
         <TextField
           fullWidth

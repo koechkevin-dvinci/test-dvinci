@@ -1,5 +1,6 @@
 import { UserAccessComponent } from '../lib/components/UsersList';
 import React from 'react';
+import { userAccessOptions } from '../lib';
 
 export default {
   component: UserAccessComponent,
@@ -11,17 +12,5 @@ export const DefaultUserAccessComponent = (args) => {
 };
 
 DefaultUserAccessComponent.args = {
-  options:[{
-    label: 'Active',
-    value: 'active',
-    color: 'rgba(76, 175, 80, 1)'
-  },{
-    label: 'Invited',
-    value: 'invited',
-    color: '#FF9800'
-  },{
-    label: 'None',
-    value: 'none',
-    color: 'rgba(145, 158, 171, 0.86)'
-  }]
+  options: userAccessOptions
 };

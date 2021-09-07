@@ -1,49 +1,97 @@
 import React from 'react';
-import { Table, TableHead, TableCell, TableRow, TableBody, Checkbox } from '../lib';
+import { Table, TableHead, TableCell, TableRow, TableBody, Checkbox, UserTable, userAccessOptions } from '../lib';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
+import { UserTeamsList } from '../lib/components/UsersList/UserListComponents';
+import Search from '../lib/components/Search/Components';
+import Box from '@material-ui/core/Box';
+import SelectComponent from '../lib/components/Select/SelectComponent';
 
 export default {
   component: Table,
   title: 'Table',
 };
 
+const data = [
+  {
+    name: 'Jordanna M. Carpenter',
+    email: 'carpenterj@solarsight.com',
+    teams: [
+      {
+        name: 'Connecticut',
+        isTeamManager: true,
+      },
+      {
+        name: 'Solar Sight',
+        isTeamManager: false,
+      },
+      {
+        name: 'ECEC',
+        isTeamManager: false,
+      },
+    ],
+    territories: 'AZ, SC, CA, TX, MP, WC (18)',
+    access: 'active',
+  },
+  {
+    name: 'Darrel Hayden',
+    email: 'darrel_hayden@sunnova.com',
+    teams: [
+      {
+        name: 'ECEC',
+        isTeamManager: false,
+      },
+    ],
+    territories: 'All Territories',
+    access: 'none',
+  },
+  {
+    name: 'Sharna F. Mora',
+    email: 'moras@solarsight.com',
+    teams: [
+      {
+        name: 'ECEC',
+        isTeamManager: true,
+      },
+      {
+        name: 'Solar Sight',
+        isTeamManager: false,
+      },
+    ],
+    territories: 'AZ, SC',
+    access: 'invited',
+  },
+  {
+    name: 'Moses Hendricks',
+    email: 'hendricksm@solarsight.com',
+    teams: [
+      {
+        name: 'Solar Sight',
+        isTeamManager: false,
+      },
+    ],
+    territories: 'AZ, SC',
+    access: 'active',
+  },
+  {
+    name: 'Spencer J. White',
+    email: 'spencerwhite@company.co',
+    teams: [
+      {
+        name: 'Connecticut',
+        isTeamManager: true,
+      },
+    ],
+    territories: 'SC, CA, TX, MP, WC, WS (24)',
+    access: 'none',
+    disabled: true
+  },
+];
+
 export const DefaultTable = () => {
-  const data = [
-    {
-      name: 'Jordanna M. Carpenter',
-      email: 'carpenterj@solarsight.com',
-      teams: 'Connecticut, Solar Sig..(4)',
-      territories: 'AZ, SC, CA, TX, MP, WC (18)',
-    },
-    {
-      name: 'Darrel Hayden',
-      email: 'darrel_hayden@sunnova.com',
-      teams: 'ECEC',
-      territories: 'All Territories',
-    },
-    {
-      name: 'Sharna F. Mora',
-      email: 'moras@solarsight.com',
-      teams: 'ECEC, Solar Sight',
-      territories: 'AZ, SC',
-    },
-    {
-      name: 'Moses Hendricks',
-      email: 'hendricksm@solarsight.com',
-      teams: 'Solar Sight',
-      territories: 'AZ, SC',
-    },
-    {
-      name: 'Spencer J. White',
-      email: 'spencerwhite@company.co',
-      teams: 'Connecticut',
-      territories: 'SC, CA, TX, MP, WC, WS (24)',
-    },
-  ];
   return (
     <Card>
-      <CardHeader/>
+      <CardHeader />
       <Table>
         <TableHead>
           <TableRow>
@@ -66,7 +114,9 @@ export const DefaultTable = () => {
                 </TableCell>
                 <TableCell>{value.name}</TableCell>
                 <TableCell>{value.email}</TableCell>
-                <TableCell>{value.teams}</TableCell>
+                <TableCell>
+                  <UserTeamsList teams={value.teams} />
+                </TableCell>
                 <TableCell>{value.territories}</TableCell>
                 <TableCell>{value.access}</TableCell>
               </TableRow>
@@ -74,9 +124,28 @@ export const DefaultTable = () => {
           })}
         </TableBody>
       </Table>
-      <CardHeader/>
+      <CardHeader />
     </Card>
   );
 };
 
+export const UserList = (args) => <UserTable {...args} />;
+
+UserList.args = {
+  users: data,
+  userAccessOptions,
+  onSelect: console.log,
+  dataCount: 100,
+  showPagination: false,
+  handleChangePage: console.log,
+  handleChangeRowsPerPage: console.log,
+  paginationExtraProps: {},
+  filterComponent: (
+    <Box display="flex">
+      <Search style={{ flex: 1 }} placeholder="Search" />
+      <SelectComponent shrink style={{ flex: 1, marginLeft: 8 }} placeholder="Team" options={[]} />
+      <SelectComponent shrink style={{ flex: 1, marginLeft: 8 }} placeholder="Access" options={[]} />
+    </Box>
+  ),
+};
 DefaultTable.args = {};

@@ -19,8 +19,9 @@ import {
   TableCell,
 } from './components/Table';
 import Checkbox from './components/Checkbox';
-import { UserAccessComponent } from './components/UsersList';
+import { UserAccessComponent, UserTable } from './components/UsersList';
 import Input from './components/Input';
+import { THEMES, userAccessOptions } from './constants';
 
 export {
   Button,
@@ -46,4 +47,7 @@ export {
   Checkbox,
   UserAccessComponent,
   Input,
+  UserTable,
+  THEMES,
+  userAccessOptions
 };
