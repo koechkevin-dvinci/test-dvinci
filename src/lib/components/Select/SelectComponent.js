@@ -13,7 +13,7 @@ const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export const SelectComponent = (props) => {
-  const { label, checkBoxProps, size, shrink, classes, ...restProps } = props;
+  const { label, checkBoxProps, size, shrink, classes, disabled, ...restProps } = props;
   const classNames = useStyles();
 
   return (
@@ -46,6 +46,7 @@ export const SelectComponent = (props) => {
         );
       }}
       {...restProps}
+      disabled={disabled}
       renderInput={(params) => (
         <div ref={params.InputProps.ref}>
           <TextField
@@ -59,7 +60,7 @@ export const SelectComponent = (props) => {
               ...params.InputProps,
               ...restProps.InputProps,
               startAdornment: restProps.options.find(({ label }) => params.inputProps.value === label)?.icon ? (
-                <InputAdornment position="start">
+                <InputAdornment style={{ marginLeft: 8 }} position="start">
                   {restProps.options.find(({ label }) => params.inputProps.value === label)?.icon}
                 </InputAdornment>
               ) : undefined,

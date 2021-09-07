@@ -1,4 +1,4 @@
-import { UserAccessComponent } from './UserListComponents';
+import { UserAccessComponent, UserTable } from './UserListComponents';
 export {
-  UserAccessComponent
+  UserAccessComponent, UserTable
 }
