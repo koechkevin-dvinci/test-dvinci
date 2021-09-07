@@ -59,7 +59,7 @@ export const SelectComponent = (props) => {
               ...params.InputProps,
               ...restProps.InputProps,
               startAdornment: restProps.options.find(({ label }) => params.inputProps.value === label)?.icon ? (
-                <InputAdornment position="start">
+                <InputAdornment style={{ marginLeft: 8 }} position="start">
                   {restProps.options.find(({ label }) => params.inputProps.value === label)?.icon}
                 </InputAdornment>
               ) : undefined,
