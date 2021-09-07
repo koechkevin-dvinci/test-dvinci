@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiOutlinedInput-notchedOutline': {
       borderColor: 'transparent',
     },
+    '& .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'transparent',
+    },
     '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
       borderColor: 'rgba(145, 158, 171, 0.24)',
       borderWidth: 1,
@@ -31,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   selectIcon: {
-    color: 'rgba(145, 158, 171, 0.86)',
+    color: 'rgba(145, 158, 171, 0.86) !important',
   },
   actions: {
     color: 'rgba(145, 158, 171, 0.86)',
@@ -42,13 +45,13 @@ export const UserAccessComponent = (props) => {
   const classNames = useStyles();
   const fieldOptions = options.map((opt, index) => {
     return {
-      icon: <FiberManualRecordIcon key={index} fontSize="small" style={{ color: opt.color, height: 12, width: 12 }} />,
+      icon: <FiberManualRecordIcon key={index} fontSize="small" style={{ color: opt.color, height: 20, width: 20 }} />,
       ...opt,
     };
   });
   return (
     <SelectComponent
-      classes={{ root: classNames.root, focused: classNames.focused }}
+      classes={{ root: classNames.root, focused: classNames.focused, disabled: classNames.root }}
       size="small"
       options={fieldOptions}
       {...restProps}
@@ -57,14 +60,14 @@ export const UserAccessComponent = (props) => {
 };
 
 export const UserTeamsList = (props) => {
-  const { teams } = props;
+  const { teams, disabled } = props;
   return (
     <Box style={{ textOverflow: 'ellipsis' }} display="flex">
       {teams.map(({ isTeamManager, name }, index) => (
         <Fragment key={index}>
-          {isTeamManager && <PeopleIcon color="primary" style={{ marginRight: 8 }} />}{' '}
+          {isTeamManager && <PeopleIcon color={disabled? undefined :"primary"} style={{ marginRight: 8, color: disabled ? 'rgba(145, 158, 171, 0.86)': undefined  }} />}{' '}
           {index < 2 && (
-            <Typography style={{ marginLeft: 4 }}>
+            <Typography color={disabled?'textSecondary': undefined} style={{ marginLeft: 4,}}>
               {name}
               {index !== teams.length - 1 ? ', ' : ''}
             </Typography>
@@ -99,7 +102,7 @@ export const UserTable = (props) => {
         <TableHead>
           <TableRow>
             <TableCell padding="checkbox">
-              <Checkbox inputProps={{ 'aria-label': 'select all desserts' }} {...headerCheckboxProps} />
+              <Checkbox inputProps={{ 'aria-label': 'select all desserts' }} {...headerCheckboxProps}  />
             </TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Email</TableCell>
@@ -112,18 +115,30 @@ export const UserTable = (props) => {
           {users.map((value, index) => {
             const access = userAccessOptions.find(({ value: val }) => val === value.access);
             return (
-              <TableRow disabled key={index}>
+              <TableRow key={index}>
                 <TableCell padding="checkbox">
-                  <Checkbox onChange={() => onSelect(value)} inputProps={{ 'aria-label': 'select all desserts' }} />
+                  <Checkbox checked={value.disabled ? false: undefined} onChange={() => !value.disabled && onSelect(value)} inputProps={{ 'aria-label': 'select all desserts' }} />
                 </TableCell>
-                <TableCell>{value.name}</TableCell>
-                <TableCell>{value.email}</TableCell>
                 <TableCell>
-                  <UserTeamsList teams={value.teams} />
+                  <Typography color={value.disabled ? 'textSecondary': undefined}>
+                  {value.name}
+                  </Typography>
                 </TableCell>
-                <TableCell>{value.territories}</TableCell>
                 <TableCell>
-                  <UserAccessComponent options={userAccessOptions} defaultValue={access} />
+                  <Typography color={value.disabled ? 'textSecondary': undefined}>
+                  {value.email}
+                  </Typography>
+                  </TableCell>
+                <TableCell>
+                  <UserTeamsList disabled={value.disabled} teams={value.teams} />
+                </TableCell>
+                <TableCell>
+                  <Typography color={value.disabled ? 'textSecondary': undefined}>
+                  {value.territories}
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <UserAccessComponent disabled={value.disabled} open={value.disabled ? false: undefined} options={userAccessOptions} defaultValue={access} />
                 </TableCell>
               </TableRow>
             );

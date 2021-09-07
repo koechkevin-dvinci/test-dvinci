@@ -79,11 +79,12 @@ const data = [
     teams: [
       {
         name: 'Connecticut',
-        isTeamManager: false,
+        isTeamManager: true,
       },
     ],
     territories: 'SC, CA, TX, MP, WC, WS (24)',
-    access: 'invited',
+    access: 'none',
+    disabled: true
   },
 ];
 
