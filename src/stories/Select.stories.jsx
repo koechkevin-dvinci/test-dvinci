@@ -50,7 +50,7 @@ MoreOptions.args = {
   ],
   id: '11',
   label: 'Country',
-  size: 'small',
+  size: 'medium',
 };
 
 const top100Films = [
@@ -172,7 +172,7 @@ GroupedSelect.args = {
   options: top100Films,
   id: '1',
   label: 'Country',
-  size: 'small',
+  size: 'medium',
 };
 
 export default {
