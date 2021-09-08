@@ -78,6 +78,7 @@ export const EditTeamModal = (args) => (
           label="Business Sector"
           options={options}
           defaultValue={options[0]}
+          disabled
           helperText="To edit, create a new team instead."
         />
       </Grid>

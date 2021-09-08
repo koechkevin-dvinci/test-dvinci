@@ -5,14 +5,18 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiOutlinedInput-notchedOutline': {
       borderColor: 'rgba(145, 158, 171, 0.24)',
     },
+
+    '& .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'rgba(145, 158, 171, 0.24)',
+    },
   },
 
   popupIndicator: {
-    color: 'rgba(145, 158, 171, 0.86)'
+    color: 'rgba(145, 158, 171, 0.86)',
   },
 
   popper: {
-    top: '8px !important'
+    top: '8px !important',
   },
   cssOutlinedInput: {
     '&$cssFocused $notchedOutline': {
@@ -41,8 +45,8 @@ const useStyles = makeStyles((theme) => ({
   },
   chip: {
     backgroundColor: 'rgba(102, 120, 138, 1)',
-    color: theme.palette.text.primary
-  }
+    color: theme.palette.text.primary,
+  },
 }));
 
 export default useStyles;
