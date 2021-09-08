@@ -21,14 +21,14 @@ const adornment = (icon) => {
 };
 
 export const SelectComponent = (props) => {
-  const { label, checkBoxProps, size, shrink, classes, disabled, ...restProps } = props;
+  const { label, checkBoxProps, size, shrink, classes, disabled, helperText, ...restProps } = props;
   const classNames = useStyles();
 
   return (
     <AutoComplete
       forcePopupIcon={'auto'}
       getOptionLabel={(option) => option.label}
-      size={size || 'small'}
+      size={size || 'medium'}
       classes={{
         root: classNames.root,
         clearIndicator: classNames.clearIndicator,
@@ -73,6 +73,7 @@ export const SelectComponent = (props) => {
           variant="outlined"
           label={label}
           placeholder={restProps.placeholder}
+          helperText={helperText}
           InputProps={{
             ...params.InputProps,
             ...restProps.InputProps,
@@ -84,9 +85,16 @@ export const SelectComponent = (props) => {
         />
       )}
       renderTags={(tagValue, getTagProps) =>
-        tagValue.map((option, index) => <Chip label={option.label} classes={{
-          root: classNames.chip
-        }} {...getTagProps({ index })} />)
+        tagValue.map((option, index) => (
+          <Chip
+            size="small"
+            label={option.label}
+            classes={{
+              root: classNames.chip,
+            }}
+            {...getTagProps({ index })}
+          />
+        ))
       }
     />
   );

@@ -10,7 +10,7 @@ const InputComponent = (props) => {
     <TextField
       fullWidth
       label={label}
-      size={size || 'small'}
+      size={size || 'medium'}
       variant={variant || 'outlined'}
       InputProps={{
         classes: {
