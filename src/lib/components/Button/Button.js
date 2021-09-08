@@ -1,16 +1,17 @@
 import React from 'react';
 import { Button as MUIButton } from '@material-ui/core';
-import withStyles from '@material-ui/core/styles/withStyles';
-import { styles } from './styles';
+import useStyles from './styles';
 
 const Button = (props) => {
-  const { children, classes, ...restProps } = props;
+  const { children, classes, size, ...restProps } = props;
+
+  const styles = useStyles();
 
   return (
-    <MUIButton className={classes.button} classes={classes} {...restProps}>
+    <MUIButton size={size || 'medium'} classes={{ ...classes, disabled: styles.disabled }} {...restProps}>
       {children}
     </MUIButton>
   );
 };
 
-export default withStyles(styles)(Button);
+export default Button;

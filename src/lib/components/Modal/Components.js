@@ -10,7 +10,20 @@ import { styles } from './styles';
 import Button from '../Button';
 
 const Modal = (props) => {
-  const { open, handleClose, children, title, okText, onOk, cancelText, classes, onCancel, ...restProps } = props;
+  const {
+    open,
+    handleClose,
+    children,
+    title,
+    okText,
+    onOk,
+    cancelText,
+    classes,
+    onCancel,
+    okButtonProps,
+    cancelButtonProps,
+    ...restProps
+  } = props;
 
   return (
     <>
@@ -20,10 +33,10 @@ const Modal = (props) => {
         <DialogContent className={classes.modalContent}>{children}</DialogContent>
         <Divider />
         <DialogActions className={classes.modalFooter}>
-          <Button onClick={onCancel} color="primary" size="medium">
+          <Button onClick={onCancel} color="primary" size="medium" {...cancelButtonProps}>
             {cancelText || 'Cancel'}
           </Button>
-          <Button onClick={onOk} color="primary" variant="contained" size="medium">
+          <Button onClick={onOk} color="primary" variant="contained" size="medium" {...okButtonProps}>
             {okText || 'Submit'}
           </Button>
         </DialogActions>

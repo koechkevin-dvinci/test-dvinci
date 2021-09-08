@@ -66,3 +66,36 @@ createTeamModal.args = {
   onOk: () => {},
   onCancel: () => {},
 };
+
+export const EditTeamModal = (args) => (
+  <Modal {...args}>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Input fullWidth label={'Name'} defaultValue="Massachusetts" />
+      </Grid>
+      <Grid item xs={6}>
+        <Select
+          label="Business Sector"
+          options={options}
+          defaultValue={options[0]}
+          disabled
+          helperText="To edit, create a new team instead."
+        />
+      </Grid>
+      <Grid item xs={6}>
+        <Select multiple label="Territories" options={options} defaultValue={[options[0]]} />
+      </Grid>
+    </Grid>
+  </Modal>
+);
+EditTeamModal.args = {
+  open: true,
+  handleClose: () => {},
+  title: 'Edit Team',
+  okText: 'Save',
+  onOk: () => {},
+  onCancel: () => {},
+  okButtonProps: {
+    disabled: true,
+  },
+};

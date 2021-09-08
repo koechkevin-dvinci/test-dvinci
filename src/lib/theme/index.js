@@ -108,14 +108,14 @@ export const baseOptions = {
     },
     overline: {
       fontWeight: 600,
-      fontSize: 12
+      fontSize: 12,
     },
     body1: {
-      fontSize: 14
+      fontSize: 14,
     },
     body2: {
-      fontSize: 14
-    }
+      fontSize: 14,
+    },
   },
   overrides: {
     MuiInputBase: {
