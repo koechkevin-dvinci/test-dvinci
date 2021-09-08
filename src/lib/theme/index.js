@@ -80,7 +80,8 @@ const baseOptions = {
     },
     fontFamily:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
-    fontSize: 18,
+    fontSize: 12,
+    htmlFontSize: 18,
     h1: {
       fontWeight: 600,
       fontSize: 28,
@@ -99,7 +100,7 @@ const baseOptions = {
     },
     h5: {
       fontWeight: 600,
-      fontSize: 20,
+      fontSize: 24,
     },
     h6: {
       fontWeight: 600,
@@ -107,7 +108,14 @@ const baseOptions = {
     },
     overline: {
       fontWeight: 600,
+      fontSize: 12
     },
+    body1: {
+      fontSize: 14
+    },
+    body2: {
+      fontSize: 14
+    }
   },
   overrides: {
     MuiInputBase: {

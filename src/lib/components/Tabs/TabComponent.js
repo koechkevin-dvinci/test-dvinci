@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles, Tab as MuiTab, Tabs } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
+import Typography from "@material-ui/core/Typography";
 
 const style = {
   root: {
@@ -13,10 +14,10 @@ const style = {
 };
 
 const Tab = (props) => {
-  const { styles, ...restProps } = props;
+  const { styles, label, style, ...restProps } = props;
   const useStyles = makeStyles({ ...style, ...styles });
   const classes = useStyles();
-  return <MuiTab className={classes.root} {...restProps} />;
+  return <MuiTab className={classes.root} label={<Typography style={{...style, fontWeight: 600 }} variant="body1">{label}</Typography>} {...restProps} />;
 };
 
 export const TabPanel = (props) => {
