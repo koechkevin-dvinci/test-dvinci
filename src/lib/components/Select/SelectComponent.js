@@ -84,7 +84,9 @@ export const SelectComponent = (props) => {
         />
       )}
       renderTags={(tagValue, getTagProps) =>
-        tagValue.map((option, index) => <Chip label={option.label} {...getTagProps({ index })} />)
+        tagValue.map((option, index) => <Chip label={option.label} classes={{
+          root: classNames.chip
+        }} {...getTagProps({ index })} />)
       }
     />
   );

@@ -39,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  chip: {
+    backgroundColor: 'rgba(102, 120, 138, 1)',
+    color: theme.palette.text.primary
+  }
 }));
 
 export default useStyles;
