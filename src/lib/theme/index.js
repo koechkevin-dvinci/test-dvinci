@@ -3,7 +3,7 @@ import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { THEMES } from '../constants';
 import { lightShadows, darkShadows } from './shadows';
 
-const baseOptions = {
+export const baseOptions = {
   direction: 'ltr',
   components: {
     MuiAvatar: {
@@ -131,11 +131,11 @@ const baseOptions = {
           color: 'rgba(145, 158, 171, 0.86)',
         },
       },
-    }
+    },
   },
 };
 
-const themesOptions = {
+export const themesOptions = {
   [THEMES.LIGHT]: {
     components: {
       MuiInputBase: {
@@ -302,4 +302,13 @@ export const createCustomTheme = (config = {}) => {
   }
 
   return theme;
+};
+
+export const theme = (isDarkMode = true, direction = 'ltr') => {
+  return createCustomTheme({
+    direction: direction,
+    responsiveFontSizes: false,
+    roundedCorners: true,
+    theme: isDarkMode ? THEMES.DARK : THEMES.LIGHT,
+  });
 };
