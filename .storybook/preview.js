@@ -14,7 +14,7 @@ const Decorator = (Story, args) => {
   const isDarkMode = useDarkMode();
   const theme = createCustomTheme({
     direction: 'ltr',
-    responsiveFontSizes: true,
+    responsiveFontSizes: false,
     roundedCorners: true,
     theme: isDarkMode ? THEMES.DARK : THEMES.LIGHT,
   });

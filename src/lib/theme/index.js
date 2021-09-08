@@ -80,30 +80,30 @@ const baseOptions = {
     },
     fontFamily:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
-    fontSize: 18,
+    fontSize: '16px',
     h1: {
       fontWeight: 600,
-      fontSize: 28,
+      fontSize: '28px',
     },
     h2: {
       fontWeight: 600,
-      fontSize: 26,
+      fontSize: '26px',
     },
     h3: {
       fontWeight: 600,
-      fontSize: 24,
+      fontSize: '24px',
     },
     h4: {
       fontWeight: 600,
-      fontSize: 22,
+      fontSize: '22px',
     },
     h5: {
       fontWeight: 600,
-      fontSize: 20,
+      fontSize: '20px',
     },
     h6: {
       fontWeight: 600,
-      fontSize: 18,
+      fontSize: '18px',
     },
     overline: {
       fontWeight: 600,
