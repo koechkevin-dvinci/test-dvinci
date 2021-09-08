@@ -30,7 +30,7 @@ export const PageHeader = (props) => {
             </Fragment>
           ))}
         </Box>
-        <Typography style={{ lineHeight: '32px' }} variant="h3">
+        <Typography variant="h5">
           {title}
         </Typography>
       </Grid>
@@ -72,7 +72,7 @@ export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuC
   };
   return (
     <Box display="flex" justifyContent="space-between" style={{ height: 28 }} alignItems="center">
-      <Typography>{headerText}</Typography>
+      <Typography variant="overline">{headerText}</Typography>
       {!disabled && <IconButton color="primary" onClick={handleClick}>
         <MoreVert />
       </IconButton>}
@@ -114,11 +114,13 @@ export const FooterComponent = (props) => {
         {avatars.map((user, index) => {
           return (
             <Avatar className={disabled ? classes.disabledAvatar: classes.avatar} style={{ marginRight: 8 }} key={index} alt={user.altIcon} src={user.imgSrc}>
+              <Typography color="textPrimary" variant="body2">
               {!user.imgSrc && user.altIcon}
+              </Typography>
             </Avatar>
           );
         })}
-        <Typography>{text}</Typography>
+        <Typography variant="body2">{text}</Typography>
       </Box>
       <IconButton size="small" disabled={disabled}>
         <Typography color="textSecondary">
