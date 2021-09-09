@@ -114,6 +114,9 @@ export const baseOptions = {
       fontSize: 14,
     },
     body1: {
+      fontSize: 14,
+    },
+    caption: {
       fontSize: 12,
     },
   },
