@@ -22,6 +22,7 @@ import Checkbox from './components/Checkbox';
 import { UserAccessComponent, UserTable } from './components/UsersList';
 import Input from './components/Input';
 import { THEMES, userAccessOptions } from './constants';
+import { UserDetail } from './components/UserDetailComponent';
 
 export {
   Button,
@@ -53,5 +54,6 @@ export {
   createCustomTheme,
   baseOptions,
   themesOptions,
-  theme
+  UserDetail,
+  theme,
 };

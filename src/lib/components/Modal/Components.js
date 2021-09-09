@@ -22,6 +22,7 @@ const Modal = (props) => {
     onCancel,
     okButtonProps,
     cancelButtonProps,
+    hideFooter,
     ...restProps
   } = props;
 
@@ -32,14 +33,14 @@ const Modal = (props) => {
         <Divider />
         <DialogContent className={classes.modalContent}>{children}</DialogContent>
         <Divider />
-        <DialogActions className={classes.modalFooter}>
+        {!hideFooter && <DialogActions className={classes.modalFooter}>
           <Button onClick={onCancel} color="primary" size="medium" {...cancelButtonProps}>
             {cancelText || 'Cancel'}
           </Button>
           <Button onClick={onOk} color="primary" variant="contained" size="medium" {...okButtonProps}>
             {okText || 'Submit'}
           </Button>
-        </DialogActions>
+        </DialogActions>}
       </Dialog>
     </>
   );

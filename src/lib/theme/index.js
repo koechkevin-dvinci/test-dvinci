@@ -110,11 +110,11 @@ export const baseOptions = {
       fontWeight: 600,
       fontSize: 12,
     },
-    body1: {
-      fontSize: 14,
-    },
     body2: {
       fontSize: 14,
+    },
+    body1: {
+      fontSize: 12,
     },
   },
   overrides: {
