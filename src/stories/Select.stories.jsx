@@ -1,11 +1,14 @@
 import React from 'react';
 import { Select } from '../lib';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import Box from "@material-ui/core/Box";
 
 const Template = (args) => <Select {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   label: 'Business Categories',
+  size: 'small',
   options: [
     {
       label: 'One',
@@ -26,10 +29,13 @@ Default.args = {
   ],
 };
 
-const AutoCompleteFunc = (args) => <Select {...args} />;
+const AutoCompleteFunc = (args) => <Box display="flex" justifyContent="center">
+  <Box style={{ width: 400}}>
+    <Select {...args} />
+  </Box>
+</Box>;
 export const MoreOptions = AutoCompleteFunc.bind({});
 MoreOptions.args = {
-  open: true,
   options: [
     {
       label: 'One',
@@ -50,7 +56,7 @@ MoreOptions.args = {
   ],
   id: '11',
   label: 'Country',
-  size: 'medium',
+  size: 'small',
 };
 
 const top100Films = [
@@ -166,13 +172,42 @@ const top100Films = [
 
 export const GroupedSelect = AutoCompleteFunc.bind({});
 GroupedSelect.args = {
-  open: true,
   groupBy: (option) => option.firstLetter,
   multiple: true,
   options: top100Films,
   id: '1',
   label: 'Country',
-  size: 'medium',
+  size: 'small',
+};
+
+export const WithIcons = AutoCompleteFunc.bind({});
+const iconOptions = [
+  {
+    label: 'Active',
+    icon: <FiberManualRecordIcon fontSize="small" style={{ color: 'rgba(76, 175, 80, 1)', height: 18, width: 18 }} />,
+    value: 'active',
+    color: 'rgba(76, 175, 80, 1)',
+  },
+  {
+    label: 'Invited',
+    value: 'invited',
+    icon: <FiberManualRecordIcon fontSize="small" style={{ color: '#FF9800', height: 18, width: 18 }} />,
+  },
+  {
+    label: 'None',
+    value: 'none',
+    icon: (
+      <FiberManualRecordIcon fontSize="small" style={{ color: 'rgba(145, 158, 171, 0.86)', height: 18, width: 18 }} />
+    ),
+    color: 'rgba(145, 158, 171, 0.86)',
+  },
+]
+WithIcons.args = {
+  defaultValue: iconOptions[0],
+  options: iconOptions,
+  id: '1',
+  label: 'Access',
+  size: 'small',
 };
 
 export default {

@@ -1,3 +1,3 @@
-import AddNewMember, { ListComponent } from './AddNewMembersComponents';
+import AddNewMember, { MemberListItem } from './AddNewMembersComponents';
 
-export { AddNewMember, ListComponent }
+export { AddNewMember, MemberListItem }

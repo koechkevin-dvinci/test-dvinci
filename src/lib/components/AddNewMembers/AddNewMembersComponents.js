@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import Modal from '../Modal/Components';
 import SelectComponent from '../Select/SelectComponent';
 import Box from '@material-ui/core/Box';
 import Button from '../Button';
 import { makeStyles } from '@material-ui/core';
-import { ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, List } from '@material-ui/core';
+import { ListItem as MuiListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, List } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add'
@@ -17,7 +16,7 @@ const useStyles = makeStyles(styles);
 const getAltName = (splittedName = ['', '']) => {
   return (splittedName[0][0] + splittedName[1][0]).toUpperCase();
 }
-export const ListComponent = (props) => {
+export const MemberListItem = (props) => {
   const classes = useStyles();
 
   const {
@@ -44,7 +43,7 @@ export const ListComponent = (props) => {
   const imgAltName = getAltName(splittedName);
   const avatarClass = disabled ? 'disabledAvatar': (isTeamManager ? 'teamManagerAvatar': 'avatar');
   return (
-    <ListItem className={rootClassName} disabled={disabled} {...restProps}>
+    <MuiListItem className={rootClassName} disabled={disabled} {...restProps}>
       <ListItemAvatar>
         <Avatar alt={imgAltName} className={`${classes.avatar} ${classes[avatarClass]}`} src={imgSrc}>
           {!imgSrc && imgAltName}
@@ -54,7 +53,7 @@ export const ListComponent = (props) => {
         primary={
           <Box display="flex" alignItems="center">
             <Typography>{displayName}</Typography>
-            <Typography style={{ marginLeft: 16, fontSize: 12 }} color="textSecondary" variant="body2">
+            <Typography style={{ marginLeft: 16 }} color="textSecondary" variant="caption">
               {labelTag}
             </Typography>
           </Box>
@@ -94,7 +93,7 @@ export const ListComponent = (props) => {
           }
         </ListItemSecondaryAction>
       )}
-    </ListItem>
+    </MuiListItem>
   );
 };
 
@@ -106,17 +105,14 @@ const AddNewMember = (props) => {
     onRemove,
     onMakeTeamManager,
     selectProps,
-    hideSecondaryAction,
     onAddMember,
     onClickPlusIcon,
-    ...restProps
   } = props;
   const classes = useStyles();
   const [selectedUser, setSelectedUser] = useState();
   const [placeholder, setPlaceHolder] = useState(() => selectProps.placeholder || 'Type name or email');
 
   return (
-    <Modal okText="Done" title="Add members" {...restProps}>
       <Box className={classes.body}>
         <Box display="flex" alignItems="center">
           <Box style={{ flex: 1 }}>
@@ -148,7 +144,7 @@ const AddNewMember = (props) => {
           <List subheader="MEMBERS">
             {members.map((member, index) => {
               return (
-                <ListComponent
+                <MemberListItem
                   hideSecondaryAction={member.hideSecondaryAction}
                   onRemove={() => onRemove(member)}
                   onMakeTeamManager={() => onMakeTeamManager(member)}
@@ -166,7 +162,6 @@ const AddNewMember = (props) => {
           </List>
         </Box>}
       </Box>
-    </Modal>
   );
 };
 
