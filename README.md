@@ -2,7 +2,50 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Dvinci Storybook configuration
 
-  
+### Exported Components and Utilities
+
+```
+  Button,
+  ManagementCard,
+  Search,
+  Modal,
+  Tabs,
+  Tab,
+  TabPanel,
+  PageHeader,
+  Select,
+  parse,
+  match,
+  AddNewMember,
+  TableRow,
+  TableFooter,
+  Table,
+  TableContainer,
+  TableBody,
+  TablePagination,
+  TableHead,
+  TableCell,
+  Checkbox,
+  UserAccessComponent,
+  Input,
+  UserTable,
+  THEMES,
+  userAccessOptions,
+  createCustomTheme,
+  baseOptions,
+  themesOptions,
+  UserDetail,
+  theme,
+  MuiListItemAvatar,
+  MuiListItemText,
+  MuiListItem,
+  MuiAvatar,
+  MemberListItem,
+  MuiList,
+  CardHeader,
+  CardBody,
+  CardFooter,
+```
 
 ## How to use the `npm` package
 
@@ -15,6 +58,25 @@ NB: This is a private package so you will need authenticate before installing th
  1. Run `npm login` in your terminal and input your username and password for npm to authenticate
  2. ```yarn add @dvinci1/components```  or ```npm i @dvinci1/components```
  
+#### Setup
+Bootstrap your application as the example below to use components from this library
+
+```js
+import React from 'react';
+import { theme } from '@dvinci1/components';
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+
+const App = (props) => {
+  const isDarkMode = true
+  const appTheme = theme(isDarkMode, 'ltr');
+  return (
+    <ThemeProvider theme={appTheme}>
+    <CssBaseline />
+      <YourApplicationRootComponent />
+    </ThemeProvider>
+  );
+};
+```
 
 #### Sample usage
 After the installation is complete, you can use the components by importing 
