@@ -1,12 +1,17 @@
 import Button from './components/Button';
-import ManagementCard, { PageHeader } from './components/ManagementCard';
+import ManagementCard, {
+  PageHeader,
+  FooterComponent as CardFooter,
+  BodyComponent as CardBody,
+  HeaderComponent as CardHeader,
+} from './components/ManagementCard';
 import Search from './components/Search';
 import Modal from './components/Modal';
 import { Tabs, Tab, TabPanel } from './components/Tabs';
 import { SelectComponent } from './components/Select/SelectComponent';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import { AddNewMember } from './components/AddNewMembers';
+import { AddNewMember, MemberListItem } from './components/AddNewMembers';
 import { createCustomTheme, baseOptions, themesOptions, theme } from './theme';
 import {
   TableRow,
@@ -22,6 +27,14 @@ import Checkbox from './components/Checkbox';
 import { UserAccessComponent, UserTable } from './components/UsersList';
 import Input from './components/Input';
 import { THEMES, userAccessOptions } from './constants';
+import { UserDetail } from './components/UserDetailComponent';
+import {
+  ListItemAvatar as MuiListItemAvatar,
+  ListItemText as MuiListItemText,
+  Avatar as MuiAvatar,
+  ListItem as MuiListItem,
+  List as MuiList,
+} from '@material-ui/core';
 
 export {
   Button,
@@ -53,5 +66,15 @@ export {
   createCustomTheme,
   baseOptions,
   themesOptions,
-  theme
+  UserDetail,
+  theme,
+  MuiListItemAvatar,
+  MuiListItemText,
+  MuiListItem,
+  MuiAvatar,
+  MemberListItem,
+  MuiList,
+  CardHeader,
+  CardBody,
+  CardFooter,
 };

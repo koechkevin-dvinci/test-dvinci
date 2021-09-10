@@ -1,13 +1,22 @@
 import React from 'react';
-import { AddNewMember } from '../lib';
+import { AddNewMember, Modal } from '../lib';
+import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
 
-const Template = (args) => <AddNewMember {...args} />;
+const Template = ({ open, ...args }) => (
+  <Box display="flex" justifyContent="center">
+    <Paper style={{ width: 500, padding: 24 }}>
+      <AddNewMember {...args} />
+    </Paper>
+  </Box>
+);
 const props = {
   open: true,
   okText: 'Finish',
   hideSecondaryAction: false,
-  addButtonProps: {},
-  selectProps: {},
+  addButtonProps: {
+  },
+  selectProps: {  size: 'small'},
   onRemove: console.log,
   onMakeTeamManager: console.log,
   onAddMember: console.log,
@@ -63,8 +72,8 @@ const props = {
     },
   ],
 };
-export const Default = Template.bind({});
-Default.args = props;
+export const TestComponent = Template.bind({});
+TestComponent.args = props;
 
 export default {
   title: 'Add or Edit Members Component',
