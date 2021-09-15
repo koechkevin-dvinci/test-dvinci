@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@material-ui/core';
 import { THEMES } from '../constants';
 import { lightShadows, darkShadows } from './shadows';
 
