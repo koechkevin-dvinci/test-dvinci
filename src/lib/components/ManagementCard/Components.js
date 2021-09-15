@@ -147,14 +147,14 @@ const ManagementCard = (props) => {
     ...restProps
   } = props;
 
-  const makeThemeFunction = (theme) => {
-    if (typeof makeStyles === 'function') {
-      return { ...styles(theme), ...makeStyles(theme) };
-    }
-    return { ...styles(theme), ...makeStyles };
-  };
+  // const makeThemeFunction = (theme) => {
+  //   if (typeof makeStyles === 'function') {
+  //     return { ...styles(theme), ...makeStyles(theme) };
+  //   }
+  //   return { ...styles(theme), ...makeStyles };
+  // };
 
-  const useStyles = makeStyles(makeThemeFunction);
+  const useStyles = makeStyles((theme) => styles(theme));
   const classes = useStyles();
   return (
     <Card variant={disabled ? 'outlined': undefined} className={disabled? classes.disabled :classes.root} {...restProps}>
