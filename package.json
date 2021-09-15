@@ -1,6 +1,6 @@
 {
   "name": "@dvinci1/components",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
