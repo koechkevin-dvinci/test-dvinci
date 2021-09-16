@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {
   Tabs,
@@ -27,7 +27,20 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => <ManagementCard {...args} />;
+const Template = (args) => {
+  const [open, setOpen] = useState(args.menuOpen)
+
+  const menuChildren = [
+    <MenuItem onClick={() => setOpen(false)} key={0}>Edit Details</MenuItem>,
+    <Divider key={11} />,
+    <MenuItem key={1}>Edit Members</MenuItem>,
+    <Divider key={111} />,
+    <MenuItem key={2}>
+      <Typography color="secondary">De-Activate</Typography>
+    </MenuItem>,
+  ];
+  return <ManagementCard {...args} menuChildren={menuChildren} menuOpen={open} onCloseMenu={() => setOpen(false)} onHamburgerClick={() => setOpen(true)} />
+};
 
 const MenuChildren = [
   <MenuItem key={0}>Edit Details</MenuItem>,
@@ -52,6 +65,7 @@ WithAvatarsAndText.args = {
       borderRadius: 8,
     },
   },
+  menuOpen: false,
   bodyDescription: 'MA',
   avatars: [
     {
@@ -79,6 +93,7 @@ Install.args = {
   bodyHeader: 'Flow Home Energy',
   bodyDescription: 'AZ, SC, CA, TX',
   menuChildren: MenuChildren,
+  menuOpen: false,
   onClickAddMember: () => console.log('Add a member'),
   onHamburgerClick: () => console.log('Action to open hamburger'),
   avatars: [
@@ -98,6 +113,7 @@ TextOnly.args = {
   onHamburgerClick: () => console.log('Action to open hamburger'),
   menuChildren: MenuChildren,
   bodyHeader: 'ECEC',
+  menuOpen: false,
   bodyDescription: 'ST, ST, ST, ST, ST, ST, ST, ST, ST, ST, ST, ST,ST, ST, ST, ST, ST, ST, ST, ST, ST, ST, ST, ST,',
   avatars: [],
 };
@@ -110,6 +126,7 @@ Disabled.args = {
   bodyHeader: 'Juary Goncalves',
   bodyDescription: 'All territories',
   menuChildren: MenuChildren,
+  menuOpen: false,
   onActivate: () => (Disabled.args.disabled = !Disabled.args.disabled),
   onClickAddMember: () => console.log('Add a member'),
   onHamburgerClick: () => console.log('Action to open hamburger'),
