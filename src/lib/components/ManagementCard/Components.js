@@ -15,7 +15,7 @@ export const PageHeader = (props) => {
   const useStyles = makeStyles(styles);
   const classes = useStyles();
   return (
-    <Grid container justifyContent="space-between" {...restProps}>
+    <Grid container justifyContent="space-between" alignItems="center" {...restProps}>
       <Grid item>
         <Box display="flex" alignItems="center" style={{ height: 32 }}>
           {splitPaths.map((path, index) => (
@@ -60,7 +60,7 @@ PageHeader.propTypes = {
   primaryText: PropTypes.string.isRequired,
 };
 
-export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuChildren, disabled, onActivate }) => {
+export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuChildren, disabled, onActivate, menuOpen = false, onCloseMenu }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -69,11 +69,14 @@ export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuC
 
   const handleClose = () => {
     setAnchorEl(null);
+    if(onCloseMenu) {
+      onCloseMenu();
+    }
   };
   return (
     <Box display="flex" justifyContent="space-between" style={{ height: 28 }} alignItems="center">
       <Typography variant="overline">{headerText}</Typography>
-      {!disabled && <IconButton color="primary" onClick={handleClick}>
+      {!disabled && <IconButton ref={setAnchorEl} color="primary" onClick={handleClick}>
         <MoreVert />
       </IconButton>}
       {
@@ -83,7 +86,7 @@ export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuC
         id="customized-menu"
         anchorEl={anchorEl}
         keepMounted
-        open={Boolean(anchorEl)}
+        open={Boolean(anchorEl) && menuOpen}
         onClose={handleClose}
         {...menuProps}
       >
@@ -112,7 +115,7 @@ export const FooterComponent = (props) => {
     <Box style={{ flex: 1 }} display="flex" justifyContent="space-between" alignItems="center">
       <Box display="flex" alignItems="center" style={{ flex: 1 }}>
         {avatars.map((user, index) => {
-          return (
+          return index < 5 && (
             <Avatar className={disabled ? classes.disabledAvatar: classes.avatar} style={{ marginRight: 8 }} key={index} alt={user.altIcon} src={user.imgSrc}>
               <Typography color="textPrimary" variant="body2">
               {!user.imgSrc && user.altIcon}
@@ -144,15 +147,10 @@ const ManagementCard = (props) => {
     menuChildren,
     disabled,
     onActivate,
+    menuOpen,
+    onCloseMenu,
     ...restProps
   } = props;
-
-  // const makeThemeFunction = (theme) => {
-  //   if (typeof makeStyles === 'function') {
-  //     return { ...styles(theme), ...makeStyles(theme) };
-  //   }
-  //   return { ...styles(theme), ...makeStyles };
-  // };
 
   const useStyles = makeStyles((theme) => styles(theme));
   const classes = useStyles();
@@ -168,6 +166,8 @@ const ManagementCard = (props) => {
             headerText={headerText}
             disabled={disabled}
             onActivate={onActivate}
+            menuOpen={menuOpen}
+            onCloseMenu={onCloseMenu}
           />
         }
       />
@@ -195,5 +195,7 @@ ManagementCard.propTypes = {
   onHamburgerClick: PropTypes.func,
   menuProps: PropTypes.object,
   menuChildren: PropTypes.array,
+  menuOpen: PropTypes.bool,
+  onCloseMenu: PropTypes.func,
 };
 export default ManagementCard;
