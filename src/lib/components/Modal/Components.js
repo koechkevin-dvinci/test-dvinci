@@ -3,7 +3,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {Divider, makeStyles} from '@material-ui/core';
+import { Box, Divider, makeStyles } from '@material-ui/core';
 import { styles } from './styles';
 
 import Button from '../Button';
@@ -24,6 +24,7 @@ const Modal = (props) => {
     hideFooter,
     contentProps,
     actionProps,
+    leftFooterChildren,
     ...restProps
   } = props;
 
@@ -33,18 +34,21 @@ const Modal = (props) => {
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth {...restProps}>
         <DialogTitle id="form-dialog-title">{title}</DialogTitle>
         <Divider />
-        <DialogContent className={classNames.modalContent} {...contentProps}>{children}</DialogContent>
+        <DialogContent className={classNames.modalContent} {...contentProps}>
+          {children}
+        </DialogContent>
         {!hideFooter && (
           <>
             <Divider />
-          <DialogActions className={classNames.modalFooter} {...actionProps}>
-            <Button onClick={onCancel} color="primary" size="medium" {...cancelButtonProps}>
-              {cancelText || 'Cancel'}
-            </Button>
-            <Button onClick={onOk} color="primary" variant="contained" size="medium" {...okButtonProps}>
-              {okText || 'Submit'}
-            </Button>
-          </DialogActions>
+            <DialogActions className={classNames.modalFooter} {...actionProps}>
+              <Box style={{ flex: 1 }}>{leftFooterChildren}</Box>
+              <Button onClick={onCancel} color="primary" size="medium" {...cancelButtonProps}>
+                {cancelText || 'Cancel'}
+              </Button>
+              <Button onClick={onOk} color="primary" variant="contained" size="medium" {...okButtonProps}>
+                {okText || 'Submit'}
+              </Button>
+            </DialogActions>
           </>
         )}
       </Dialog>
