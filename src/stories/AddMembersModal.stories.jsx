@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddNewMember, Modal } from '../lib';
+import { AddNewMember } from '../lib';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 
@@ -16,7 +16,7 @@ const props = {
   hideSecondaryAction: false,
   addButtonProps: {
   },
-  selectProps: {  size: 'small'},
+  selectProps: {  size: 'small', multiple: true},
   onRemove: console.log,
   onMakeTeamManager: console.log,
   onAddMember: console.log,

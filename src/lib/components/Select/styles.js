@@ -35,6 +35,15 @@ const useStyles = makeStyles((theme) => ({
       borderColor: `${theme.palette.primary.main} !important`,
     },
   },
+  clearIndicator: {
+    color: 'rgba(145, 158, 171, 0.86)',
+    '&:hover': {
+      color: theme.palette.primary.main
+    },
+    '&:disabled': {
+      color: 'rgba(145, 158, 171, 0.86)',
+    }
+  },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
