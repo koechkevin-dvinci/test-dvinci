@@ -86,6 +86,9 @@ export const SelectComponent = (props) => {
             ...params.InputProps,
             ...restProps.InputProps,
             ...adornment(restProps.options.find(({ label }) => params.inputProps.value === label)?.icon),
+            style: {
+            height: size === 'small'? 40: undefined
+          }
           }}
           InputLabelProps={{
             shrink,
