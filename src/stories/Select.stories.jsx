@@ -210,6 +210,15 @@ WithIcons.args = {
   size: 'small',
 };
 
+export const MultipleSelectSelect = AutoCompleteFunc.bind({});
+MultipleSelectSelect.args = {
+  defaultValue: [top100Films[0]],
+  options: top100Films,
+  multiple: true,
+  id: '1',
+  label: 'Multiple Select',
+  size: 'small',
+}
 export default {
   title: 'Select Component',
   component: Select,

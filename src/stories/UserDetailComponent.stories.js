@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 
 export default {
   component: UserDetail,
-  title: 'User List Component',
+  title: 'User Detail Component',
 };
 
 export const ShowUserDetail = (args) => {

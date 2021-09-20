@@ -27,7 +27,7 @@ export const SelectComponent = (props) => {
   return (
     <AutoComplete
       forcePopupIcon={'auto'}
-      getOptionLabel={(option) => option.label}
+      getOptionLabel={(option) => option.label || option.value || ''}
       size={size || 'medium'}
       classes={{
         root: classNames.root,
