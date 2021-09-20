@@ -21,7 +21,9 @@ const InputComponent = (props) => {
         },
         ...inputProps,
         style: {
-          height: size === 'small'? 40: undefined
+          height: size === 'small'? 40: undefined,
+          ...InputProps?.style,
+          ...inputProps?.style,
         },
       }}
       {...restProps}
