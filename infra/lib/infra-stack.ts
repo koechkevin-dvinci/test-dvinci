@@ -25,9 +25,14 @@ export class InfraStack extends cdk.Stack {
     // add the rewrite rules 
     amplifyApp.addCustomRule(amplify.CustomRule.SINGLE_PAGE_APPLICATION_REDIRECT);
 
-    // add env variable for npm registry 
+    // the other way to add env variables 
+    // for npm registry
     // const npmToken = cdk.SecretValue.secretsManager("dev/npm/read-access-token").toString();
     // amplifyApp.addEnvironment("NPM_TOKEN", npmToken);
     
+    const domain = amplifyApp.addDomain('dvincilabs.co', {
+      enableAutoSubdomain: false, // in case subdomains should be auto registered for branches
+    });
+    domain.mapSubDomain(developBranch, 'storybook'); 
   }
 }
