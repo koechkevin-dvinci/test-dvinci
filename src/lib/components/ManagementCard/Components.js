@@ -84,7 +84,7 @@ export const HeaderComponent = ({
     <Box display="flex" justifyContent="space-between" style={{ height: 28 }} alignItems="center">
       <Typography variant="overline">{headerText}</Typography>
       {!disabled && (
-        <IconButton ref={setAnchorEl} color="primary" onClick={handleClick}>
+        <IconButton size="small" ref={setAnchorEl} color="primary" onClick={handleClick}>
           <MoreVert />
         </IconButton>
       )}
