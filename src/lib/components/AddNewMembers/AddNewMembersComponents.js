@@ -107,6 +107,7 @@ const AddNewMember = (props) => {
     selectProps,
     onAddMember,
     onClickPlusIcon,
+    showAddMembers = true,
   } = props;
   const classes = useStyles();
   const [selectedUser, setSelectedUser] = useState();
@@ -114,6 +115,7 @@ const AddNewMember = (props) => {
 
   return (
       <Box className={classes.body}>
+        {showAddMembers && (
         <Box display="flex" alignItems="center">
           <Box style={{ flex: 1 }}>
             <SelectComponent
@@ -139,8 +141,8 @@ const AddNewMember = (props) => {
           >
             Add
           </Button>
-        </Box>
-        {members.length> 0 && <Box className={classes.listMembers}>
+        </Box>)}
+        {members.length > 0 && <Box className={classes.listMembers}>
           <List subheader="MEMBERS">
             {members.map((member, index) => {
               return (
