@@ -30,9 +30,7 @@ export const PageHeader = (props) => {
             </Fragment>
           ))}
         </Box>
-        <Typography variant="h5">
-          {title}
-        </Typography>
+        <Typography variant="h5">{title}</Typography>
       </Grid>
       <Grid item>
         <Button
@@ -60,7 +58,16 @@ PageHeader.propTypes = {
   primaryText: PropTypes.string.isRequired,
 };
 
-export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuChildren, disabled, onActivate, menuOpen = false, onCloseMenu }) => {
+export const HeaderComponent = ({
+  headerText,
+  onHamburgerClick,
+  menuProps,
+  menuChildren,
+  disabled,
+  onActivate,
+  menuOpen = false,
+  onCloseMenu,
+}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -69,19 +76,23 @@ export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuC
 
   const handleClose = () => {
     setAnchorEl(null);
-    if(onCloseMenu) {
+    if (onCloseMenu) {
       onCloseMenu();
     }
   };
   return (
     <Box display="flex" justifyContent="space-between" style={{ height: 28 }} alignItems="center">
       <Typography variant="overline">{headerText}</Typography>
-      {!disabled && <IconButton ref={setAnchorEl} color="primary" onClick={handleClick}>
-        <MoreVert />
-      </IconButton>}
-      {
-        disabled && <Button onClick={onActivate} color="primary" variant="outlined">Activate</Button>
-      }
+      {!disabled && (
+        <IconButton ref={setAnchorEl} color="primary" onClick={handleClick}>
+          <MoreVert />
+        </IconButton>
+      )}
+      {disabled && (
+        <Button onClick={onActivate} color="primary" variant="outlined">
+          Activate
+        </Button>
+      )}
       <Menu
         id="customized-menu"
         anchorEl={anchorEl}
@@ -99,7 +110,9 @@ export const HeaderComponent = ({ headerText, onHamburgerClick, menuProps, menuC
 export const BodyComponent = ({ header, description, disabled }) => {
   return (
     <Box>
-      <Typography color={disabled? "textSecondary": undefined} variant="h6">{header}</Typography>
+      <Typography color={disabled ? 'textSecondary' : undefined} variant="h6">
+        {header}
+      </Typography>
       <Typography color="textSecondary" variant="body2">
         {description}
       </Typography>
@@ -115,19 +128,29 @@ export const FooterComponent = (props) => {
     <Box style={{ flex: 1 }} display="flex" justifyContent="space-between" alignItems="center">
       <Box display="flex" alignItems="center" style={{ flex: 1 }}>
         {avatars.map((user, index) => {
-          return index < 5 && (
-            <Avatar className={disabled ? classes.disabledAvatar: classes.avatar} style={{ marginRight: 8 }} key={index} alt={user.altIcon} src={user.imgSrc}>
-              <Typography color="textPrimary" variant="body2">
-              {!user.imgSrc && user.altIcon}
-              </Typography>
-            </Avatar>
+          return (
+            index < 5 && (
+              <Avatar
+                className={disabled ? classes.disabledAvatar : classes.avatar}
+                style={{ marginRight: 8 }}
+                key={index}
+                alt={user.altIcon}
+                src={user.imgSrc}
+              >
+                <Typography color="textPrimary" variant="body2">
+                  {!user.imgSrc && user.altIcon}
+                </Typography>
+              </Avatar>
+            )
           );
         })}
-        <Typography variant="body2">{text}</Typography>
+        <Typography style={{ whiteSpace: 'nowrap' }} variant="body2">
+          {text}
+        </Typography>
       </Box>
       <IconButton size="small" disabled={disabled}>
         <Typography color="textSecondary">
-      <AddIcon onClick={onAddMember} />
+          <AddIcon onClick={onAddMember} />
         </Typography>
       </IconButton>
     </Box>
@@ -155,9 +178,13 @@ const ManagementCard = (props) => {
   const useStyles = makeStyles((theme) => styles(theme));
   const classes = useStyles();
   return (
-    <Card variant={disabled ? 'outlined': undefined} className={disabled? classes.disabled :classes.root} {...restProps}>
+    <Card
+      variant={disabled ? 'outlined' : undefined}
+      className={disabled ? classes.disabled : classes.root}
+      {...restProps}
+    >
       <CardHeader
-        style={{ paddingBottom: 0, }}
+        style={{ paddingBottom: 0 }}
         subheader={
           <HeaderComponent
             menuChildren={menuChildren}
@@ -178,7 +205,9 @@ const ManagementCard = (props) => {
       <Box display="flex" alignItems="center">
         <CardHeader
           style={{ flex: 1, height: 64 }}
-          subheader={<FooterComponent disabled={disabled} onAddMember={onClickAddMember} avatars={avatars} text={footerText} />}
+          subheader={
+            <FooterComponent disabled={disabled} onAddMember={onClickAddMember} avatars={avatars} text={footerText} />
+          }
         />
       </Box>
     </Card>

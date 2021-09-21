@@ -82,6 +82,20 @@ WithAvatarsAndText.args = {
       imgSrc: '',
       name: 'Tim Sherwood',
       altIcon: 'CD',
+    },{
+      imgSrc: '',
+      name: 'Tim Sherwood',
+      altIcon: 'TS',
+    },
+    {
+      imgSrc: '',
+      name: 'Tim Sherwood',
+      altIcon: 'AB',
+    },
+    {
+      imgSrc: '',
+      name: 'Tim Sherwood',
+      altIcon: 'CD',
     },
   ],
 };

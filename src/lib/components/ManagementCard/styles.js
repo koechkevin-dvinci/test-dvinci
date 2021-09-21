@@ -1,6 +1,7 @@
 export const styles = (theme) => ({
   root: {
     maxWidth: 362,
+    minWidth: 320
   },
   avatar: {
     width: theme.spacing(4),
@@ -10,6 +11,7 @@ export const styles = (theme) => ({
   disabled: {
     maxWidth: 362,
     backgroundColor: 'transparent',
+    minWidth: 320
   },
   disabledAvatar: {
     backgroundColor: '#202934',
