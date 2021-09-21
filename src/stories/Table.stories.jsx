@@ -143,8 +143,8 @@ UserList.args = {
   filterComponent: (
     <Box display="flex">
       <Search style={{ flex: 1 }} placeholder="Search" />
-      <SelectComponent shrink style={{ flex: 1, marginLeft: 8 }} placeholder="Team" options={[]} />
-      <SelectComponent shrink style={{ flex: 1, marginLeft: 8 }} placeholder="Access" options={[]} />
+      <SelectComponent shrink style={{ flex: 1, marginLeft: 8 }} size="small" placeholder="Team" options={[]} />
+      <SelectComponent shrink style={{ flex: 1, marginLeft: 8 }} size="small" placeholder="Access" options={[]} />
     </Box>
   ),
 };
