@@ -8,7 +8,7 @@ import ManagementCard, {
 import Search from './components/Search';
 import Modal from './components/Modal';
 import { Tabs, Tab, TabPanel } from './components/Tabs';
-import { SelectComponent } from './components/Select/SelectComponent';
+import  SelectComponent  from './components/Select';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import { AddNewMember, MemberListItem } from './components/AddNewMembers';
@@ -25,7 +25,7 @@ import {
 } from './components/Table';
 import Checkbox from './components/Checkbox';
 import { UserAccessComponent, UserTable } from './components/UsersList';
-import Input from './components/Input';
+import Input, { MaskedInput } from './components/Input';
 import { THEMES, userAccessOptions } from './constants';
 import { UserDetail } from './components/UserDetailComponent';
 import {
@@ -77,4 +77,5 @@ export {
   CardHeader,
   CardBody,
   CardFooter,
+  MaskedInput
 };

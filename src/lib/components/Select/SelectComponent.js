@@ -23,12 +23,13 @@ const adornment = (icon) => {
 export const SelectComponent = (props) => {
   const { label, checkBoxProps, size, shrink, classes, disabled, helperText, ...restProps } = props;
   const classNames = useStyles();
+  const customSize = size || 'medium';
 
   return (
     <AutoComplete
       forcePopupIcon={'auto'}
       getOptionLabel={(option) => option.label || option.value || ''}
-      size={size || 'medium'}
+      size={customSize}
       classes={{
         root: classNames.root,
         clearIndicator: classNames.clearIndicator,
@@ -87,8 +88,8 @@ export const SelectComponent = (props) => {
             ...restProps.InputProps,
             ...adornment(restProps.options.find(({ label }) => params.inputProps.value === label)?.icon),
             style: {
-            height: size === 'small'? 40: undefined
-          }
+              height: customSize === 'small' ? 40 : customSize === 'medium' ? 56: undefined,
+            },
           }}
           InputLabelProps={{
             shrink,
