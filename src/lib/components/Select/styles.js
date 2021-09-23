@@ -56,6 +56,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgba(102, 120, 138, 1)',
     color: theme.palette.text.primary,
   },
+  textWithChildren: {
+    position: 'relative',
+  },
+  inputChild: {
+    position: 'absolute',
+    top: 0,
+    padding: 8,
+    paddingLeft: 10,
+    boxSizing: 'border-box',
+    pointerEvents: 'none'
+  }
 }));
 
 export default useStyles;
