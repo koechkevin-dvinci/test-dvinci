@@ -21,35 +21,8 @@ const adornment = (icon) => {
   return {};
 };
 
-const TextFieldWithChildren = (props) => {
-  const { renderInputNode, selectedValue, ...restProps } = props;
-  const classNames = useStyles();
-  const customSize = restProps.size || 'medium';
-
-  const ref = useRef();
-
-  return renderInputNode ? (
-    <Box className={classNames.textWithChildren}>
-      <TextField
-        ref={ref}
-        value="Xxxxx"
-        {...restProps}
-        InputLabelProps={{ shrink: true }}
-      />
-      <Box
-        style={{ height: ref?.current?.offsetHeight || (customSize === 'small' ? 40 : 56) }}
-        className={classNames.inputChild}
-      >
-        {renderInputNode(props, { element: ref?.current, selectedValue })}
-      </Box>
-    </Box>
-  ) : (
-    <TextField {...restProps} />
-  );
-};
-
 export const SelectComponent = (props) => {
-  const { label, checkBoxProps, size, shrink, classes, disabled, helperText, renderInputNode, ...restProps } = props;
+  const { label, checkBoxProps, size, shrink, classes, disabled, helperText, ...restProps } = props;
   const classNames = useStyles();
   const customSize = size || 'medium';
 
@@ -96,10 +69,8 @@ export const SelectComponent = (props) => {
       {...restProps}
       disabled={disabled}
       renderInput={(params) => (
-        <TextFieldWithChildren
+        <TextField
           fullWidth
-          renderInputNode={renderInputNode}
-          selectedValue={restProps.value || restProps.defaultValue}
           {...params}
           variant="outlined"
           label={disabled ? <Typography color="textSecondary">{label}</Typography> : label}

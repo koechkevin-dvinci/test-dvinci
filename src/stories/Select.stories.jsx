@@ -2,7 +2,6 @@ import React from 'react';
 import { Select } from '../lib';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Box from '@material-ui/core/Box';
-import { Typography } from '@material-ui/core';
 
 const Template = (args) => <Select {...args} />;
 
@@ -59,10 +58,7 @@ MoreOptions.args = {
   ],
   id: '11',
   label: 'Country',
-  size: 'medium',
-  renderInputNode: (props, value) => {
-    return <Typography>This is a sample component</Typography>;
-  },
+  size: 'small',
 };
 
 const top100Films = [
