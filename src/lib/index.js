@@ -36,6 +36,8 @@ import {
   List as MuiList,
 } from '@material-ui/core';
 
+import { SelectMenu } from './components/SelectMenu'
+
 export {
   Button,
   ManagementCard,
@@ -77,5 +79,6 @@ export {
   CardHeader,
   CardBody,
   CardFooter,
+  SelectMenu,
   MaskedInput
 };

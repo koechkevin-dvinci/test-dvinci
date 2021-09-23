@@ -1,7 +1,7 @@
 import React from 'react';
 import { Select } from '../lib';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import Box from "@material-ui/core/Box";
+import Box from '@material-ui/core/Box';
 
 const Template = (args) => <Select {...args} />;
 
@@ -29,11 +29,13 @@ Default.args = {
   ],
 };
 
-const AutoCompleteFunc = (args) => <Box display="flex" justifyContent="center">
-  <Box style={{ width: 400}}>
-    <Select {...args} />
+const AutoCompleteFunc = (args) => (
+  <Box display="flex" justifyContent="center">
+    <Box style={{ width: 400 }}>
+      <Select {...args} />
+    </Box>
   </Box>
-</Box>;
+);
 export const MoreOptions = AutoCompleteFunc.bind({});
 MoreOptions.args = {
   options: [
@@ -201,7 +203,7 @@ const iconOptions = [
     ),
     color: 'rgba(145, 158, 171, 0.86)',
   },
-]
+];
 WithIcons.args = {
   defaultValue: iconOptions[0],
   options: iconOptions,
@@ -218,7 +220,7 @@ MultipleSelectSelect.args = {
   id: '1',
   label: 'Multiple Select',
   size: 'small',
-}
+};
 export default {
   title: 'Select Component',
   component: Select,

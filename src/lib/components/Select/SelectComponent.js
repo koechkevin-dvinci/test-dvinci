@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef } from 'react';
 import AutoComplete from '@material-ui/lab/Autocomplete';
 import { Chip, TextField, Typography } from '@material-ui/core';
 import parse from 'autosuggest-highlight/parse';
@@ -6,6 +6,7 @@ import match from 'autosuggest-highlight/match';
 import Checkbox from '@material-ui/core/Checkbox';
 import useStyles from './styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import Box from '@material-ui/core/Box';
 
 const adornment = (icon) => {
   if (icon) {
@@ -88,7 +89,7 @@ export const SelectComponent = (props) => {
             ...restProps.InputProps,
             ...adornment(restProps.options.find(({ label }) => params.inputProps.value === label)?.icon),
             style: {
-              height: customSize === 'small' ? 40 : customSize === 'medium' ? 56: undefined,
+              minHeight: customSize === 'small' ? 40 : customSize === 'medium' ? 56 : undefined,
             },
           }}
           InputLabelProps={{
