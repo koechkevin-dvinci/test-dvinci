@@ -3,6 +3,7 @@ export const styles = (theme) => ({
 
   modalFooter: {
     padding: 16,
+    justifyContent: 'space-between',
   },
 
   modalContent: {
