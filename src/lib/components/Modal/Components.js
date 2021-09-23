@@ -42,12 +42,14 @@ const Modal = (props) => {
             <Divider />
             <DialogActions className={classNames.modalFooter} {...actionProps}>
               <Box style={{ flex: 1 }}>{leftFooterChildren}</Box>
-              <Button onClick={onCancel} color="primary" size="medium" {...cancelButtonProps}>
-                {cancelText || 'Cancel'}
-              </Button>
-              <Button onClick={onOk} color="primary" variant="contained" size="medium" {...okButtonProps}>
-                {okText || 'Submit'}
-              </Button>
+              <Box>
+                <Button onClick={onCancel} color="primary" size="medium" {...cancelButtonProps}>
+                  {cancelText || 'Cancel'}
+                </Button>
+                <Button onClick={onOk} color="primary" variant="contained" size="medium" {...okButtonProps}>
+                  {okText || 'Submit'}
+                </Button>
+              </Box>
             </DialogActions>
           </>
         )}
