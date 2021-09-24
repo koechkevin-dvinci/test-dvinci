@@ -4,6 +4,7 @@ import { IconButton, makeStyles, Menu, MenuItem, Typography } from '@material-ui
 import { useRef, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import { styles } from './SelectMenuStyles';
+import PropTypes from 'prop-types';
 
 const SelectMenuComponent = (props) => {
   const { value, onChange, renderValue, options = [], style, size, groupBy, renderGroupName } = props;
@@ -82,12 +83,15 @@ const SelectMenuComponent = (props) => {
         }}
       >
         {groupBy
-          ? Object.keys(groupedOptions).map((group, index) => {
-              return [<Box key={group} style={{ paddingLeft: 16, paddingRight: 16}}>{renderGroupName?.(group) ||
-              <Typography color="primary" key={group}>
-                {group}
-              </Typography>
-              }</Box>,
+          ? Object.keys(groupedOptions).map((group) => {
+              return [
+                <Box key={group} style={{ paddingLeft: 16, paddingRight: 16 }}>
+                  {renderGroupName?.(group) || (
+                    <Typography color="primary" key={group}>
+                      {group}
+                    </Typography>
+                  )}
+                </Box>,
                 ...groupedOptions[group].map((option, index) => {
                   const { label, onClick, menuItemProps } = option;
                   return (
@@ -109,6 +113,17 @@ const SelectMenuComponent = (props) => {
       </Menu>
     </Box>
   );
+};
+
+SelectMenuComponent.propTypes = {
+  value: PropTypes.object,
+  onChange: PropTypes.func,
+  renderValue: PropTypes.func,
+  options: PropTypes.array,
+  style: PropTypes.object,
+  size: PropTypes.string,
+  groupBy: PropTypes.func,
+  renderGroupName: PropTypes.func,
 };
 
 export default SelectMenuComponent;
