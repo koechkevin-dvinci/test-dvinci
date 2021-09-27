@@ -1,7 +1,7 @@
 import { SelectMenu } from '../lib';
 import ErrorIcon from '@material-ui/icons/Error';
-import Box from "@material-ui/core/Box";
-import {Typography} from "@material-ui/core";
+import Box from '@material-ui/core/Box';
+import { Typography } from '@material-ui/core';
 
 export default {
   title: 'Select Menu Component',
@@ -19,20 +19,26 @@ export const Default = (args) => (
 
 Default.args = {
   size: 'medium',
+  value: {
+    onClick: console.log,
+    label: 'None',
+  },
   renderValue: (selected) => {
-    return <Box display="flex" alignItems="center">
-      <ErrorIcon style={{ color: 'orange', marginRight: 16}} fontSize="large" />
-      <Box style={{ flex: 1 }}>
-        <div>
-          <Typography >{selected.label}</Typography>
-        </div>
-        <div>
-          <Typography variant="body1" color="textSecondary">
-            Secondary text
-          </Typography>
-        </div>
+    return (
+      <Box display="flex" alignItems="center">
+        <ErrorIcon style={{ color: 'orange', marginRight: 16 }} fontSize="large" />
+        <Box style={{ flex: 1 }}>
+          <div>
+            <Typography>{selected.label}</Typography>
+          </div>
+          <div>
+            <Typography variant="body1" color="textSecondary">
+              Secondary text
+            </Typography>
+          </div>
+        </Box>
       </Box>
-    </Box>
+    );
   },
   options: [
     {
@@ -53,14 +59,17 @@ Default.args = {
     },
   ],
   groupBy: (option) => {
-    return option.label
+    return option.label;
   },
   renderGroupName: (group) => {
-    return <Box>
-      <div><Typography variant="overline" color="primary">{group}</Typography></div>
-      <div>
-        <Typography variant="body2">Team</Typography>
-      </div>
-    </Box>
-  }
+    return (
+      <Box>
+        <div>
+          <Typography variant="overline" color="primary">
+            {group}
+          </Typography>
+        </div>
+      </Box>
+    );
+  },
 };
