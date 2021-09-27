@@ -61,7 +61,7 @@ const SelectMenuComponent = (props) => {
         }}
       >
         <Box role="button" onClick={handleClick} display="flex" alignItems="center" style={{ flex: 1, height: '100%' }}>
-          {(value || selected || {}).label && renderValue(value || selected || {})}
+          {(value || selected || {}).label && renderValue(selected || value || {})}
         </Box>
         {selected?.label && hover && (
           <IconButton onClick={() => onClickItem({})}>
