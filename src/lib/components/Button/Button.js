@@ -8,7 +8,7 @@ const Button = (props) => {
   const styles = useStyles();
 
   return (
-    <MUIButton size={size || 'medium'} classes={{ ...classes, disabled: styles.disabled }} {...restProps}>
+    <MUIButton size={size || 'large'} classes={{ ...classes, disabled: styles.disabled }} {...restProps}>
       {children}
     </MUIButton>
   );

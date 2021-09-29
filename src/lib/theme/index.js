@@ -290,7 +290,22 @@ export const createCustomTheme = (config = {}) => {
             root: {
               borderRadius: 24,
               textTransform: 'none',
+              '&.MuiButton-sizeLarge': {
+                height: 40,
+                fontSize: 14,
+                minWidth: 50
+              }
             },
+          },
+          MuiListItem: {
+            root: {
+              minHeight: 40
+            }
+          },
+          MuiSvgIcon: {
+            root: {
+              fontSize: 24
+            }
           },
         },
       },

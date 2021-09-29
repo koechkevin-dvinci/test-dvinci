@@ -16,7 +16,7 @@ export const styles = (theme) => ({
   },
   icon: {
     color: 'rgba(145, 158, 171, 0.86)',
-    fontSize: 16,
+    fontSize: 24,
     '&:hover': {
       // color: theme.palette.primary.main
     },

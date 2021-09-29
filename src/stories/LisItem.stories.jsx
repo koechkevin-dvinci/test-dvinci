@@ -1,6 +1,6 @@
 import { MuiListItem, MuiListItemAvatar, MuiAvatar, MuiListItemText, MuiList } from '../lib';
 import React from 'react';
-import { MemberListItem } from '../lib/components/AddNewMembers';
+import { MemberListItem } from '../lib';
 import Box from '@material-ui/core/Box';
 
 export const Default = (args) => (
