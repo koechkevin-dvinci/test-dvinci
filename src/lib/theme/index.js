@@ -307,6 +307,11 @@ export const createCustomTheme = (config = {}) => {
               fontSize: 24
             }
           },
+          MuiFormHelperText: {
+            contained: {
+              marginLeft: 2
+            }
+          }
         },
       },
       {
