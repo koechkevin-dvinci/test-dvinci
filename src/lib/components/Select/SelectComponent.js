@@ -35,6 +35,7 @@ export const SelectComponent = (props) => {
         clearIndicator: classNames.clearIndicator,
         popupIndicator: classNames.popupIndicator,
         popper: classNames.popper,
+        endAdornment: classNames.endAdornment,
         ...classes,
       }}
       renderOption={(option, { selected, inputValue }) => {

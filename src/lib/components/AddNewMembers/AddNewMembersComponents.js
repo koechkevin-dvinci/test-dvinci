@@ -42,6 +42,9 @@ export const MemberListItem = (props) => {
 
   const imgAltName = getAltName(splittedName);
   const avatarClass = disabled ? 'disabledAvatar': (isTeamManager ? 'teamManagerAvatar': 'avatar');
+  const iconStyle = {
+    fontSize: 24
+  }
   return (
     <MuiListItem className={rootClassName} disabled={disabled} {...restProps}>
       <ListItemAvatar>
@@ -65,11 +68,12 @@ export const MemberListItem = (props) => {
             onClick={onMakeTeamManager}
             disabled={disabled}
             color={isTeamManager ? 'primary': undefined}
+            style={{ marginRight: 16 }}
             classes={{
-              root: !isTeamManager ? classes.icon: undefined,
+              root: !isTeamManager ? classes.icon: classes.teamManager,
             }}
           >
-            <PeopleIcon />
+            <PeopleIcon style={iconStyle} />
           </IconButton>
           {!showAddIcon && <IconButton
             disabled={disabled}
@@ -78,7 +82,7 @@ export const MemberListItem = (props) => {
               root: classes.icon,
             }}
           >
-            <CloseIcon />
+            <CloseIcon style={iconStyle} />
           </IconButton>}
           { showAddIcon &&
             <IconButton
@@ -88,7 +92,7 @@ export const MemberListItem = (props) => {
                 root: classes.icon,
               }}
             >
-              <AddIcon />
+              <AddIcon style={iconStyle} />
             </IconButton>
           }
         </ListItemSecondaryAction>

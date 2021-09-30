@@ -23,12 +23,22 @@ const styles = (theme) => ({
   },
   icon: {
     color: 'rgba(145, 158, 171, 0.86)',
+    fontSize: 32,
+    height: 32,
+    width: 32,
+    // padding: 0,
     '&:hover': {
       color: theme.palette.primary.main
     },
     '&:disabled': {
       color: 'rgba(145, 158, 171, 0.86)',
     }
+  },
+  teamManager: {
+    fontSize: 32,
+    height: 32,
+    width: 32,
+    // padding: 0,
   },
   listItem: {
     padding: 0,

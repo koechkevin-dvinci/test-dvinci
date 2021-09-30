@@ -24,22 +24,22 @@ export const Default = () => {
       </Grid>
       <Grid container item xs={12} spacing={3}>
         <Grid item xs={12} sm={3} md={3}>
-          <Button variant="contained" size="large">
+          <Button variant="contained">
             Default
           </Button>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <Button variant="contained" size="large" color="primary">
+          <Button variant="contained" color="primary">
             Primary
           </Button>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <Button variant="contained" size="large" color="secondary">
+          <Button variant="contained" color="secondary">
             Secondary
           </Button>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <Button variant="contained" size="large" disabled>
+          <Button variant="contained" disabled>
             Disabled
           </Button>
         </Grid>
@@ -51,20 +51,20 @@ export const Default = () => {
       </Grid>
       <Grid container item xs={12} spacing={3}>
         <Grid item xs={12} sm={3} md={3}>
-          <Button size="large">Default</Button>
+          <Button>Default</Button>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <Button size="large" color="primary">
+          <Button color="primary">
             Primary
           </Button>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <Button size="large" color="secondary">
+          <Button color="secondary">
             Secondary
           </Button>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <Button size="large" disabled>
+          <Button disabled>
             Disabled
           </Button>
         </Grid>
@@ -76,22 +76,22 @@ export const Default = () => {
       </Grid>
       <Grid container item xs={12} spacing={3}>
         <Grid item xs={12} sm={3} md={3}>
-          <Button variant="outlined" size="large">
+          <Button variant="outlined">
             Default
           </Button>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <Button variant="outlined" size="large" color="primary">
+          <Button variant="outlined" color="primary">
             Primary
           </Button>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <Button variant="outlined" size="large" color="secondary">
+          <Button variant="outlined" color="secondary">
             Secondary
           </Button>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <Button variant="outlined" size="large" disabled>
+          <Button variant="outlined" disabled>
             Disabled
           </Button>
         </Grid>
@@ -103,22 +103,22 @@ export const Default = () => {
       </Grid>
       <Grid container item xs={12} spacing={3}>
         <Grid item xs={12} sm={3} md={3}>
-          <IconButton variant="outlined" size="large">
+          <IconButton variant="outlined">
             <DeleteIcon />
           </IconButton>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <IconButton variant="outlined" size="large" color="primary">
+          <IconButton variant="outlined" color="primary">
             <DeleteIcon />
           </IconButton>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <IconButton variant="outlined" size="large" color="secondary">
+          <IconButton variant="outlined" color="secondary">
             <DeleteIcon />
           </IconButton>
         </Grid>
         <Grid item xs={12} sm={3} md={3}>
-          <IconButton variant="outlined" size="large" disabled>
+          <IconButton variant="outlined" disabled>
             <DeleteIcon />
           </IconButton>
         </Grid>

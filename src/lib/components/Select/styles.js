@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
   popupIndicator: {
     color: 'rgba(145, 158, 171, 0.86)',
+    fontSize: 24
   },
 
   popper: {
@@ -55,6 +56,11 @@ const useStyles = makeStyles((theme) => ({
   chip: {
     backgroundColor: 'rgba(102, 120, 138, 1)',
     color: theme.palette.text.primary,
+  },
+  endAdornment: {
+    top:'50%',
+    transform: `translateY(-50%)`,
+    fontSize: 24,
   },
   textWithChildren: {
     position: 'relative',
