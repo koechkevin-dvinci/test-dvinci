@@ -1,7 +1,7 @@
+import React, { useRef, useState } from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { IconButton, makeStyles, Menu, MenuItem, Typography } from '@material-ui/core';
-import { useRef, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import { styles } from './SelectMenuStyles';
 import PropTypes from 'prop-types';
