@@ -220,6 +220,8 @@ MultipleSelectSelect.args = {
   id: '1',
   label: 'Multiple Select',
   size: 'small',
+  renderWithChips: false, // Use chips to display selected value on multiple
+  onChange: console.log
 };
 export default {
   title: 'Select Component',
