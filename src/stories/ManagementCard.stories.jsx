@@ -208,37 +208,41 @@ export const CardsInPage = () => {
       </Tabs>
       <TabPanel index={1} value={1}>
         <Box>
-          <Card className={classes.root}>
-            <CardContent>
-              <Grid container spacing={3}>
-                <Grid style={{ display: 'flex', alignItems: 'center' }} item xs={12} sm={6} md={3}>
-                  <Search />
-                </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                  <Select
-                    id={'1'}
-                    size="small"
-                    value={value}
-                    onChange={onChange}
-                    options={options}
-                    label="Business Sector"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                  <Select size="small" id={'2'} value={value} onChange={onChange} options={options} label="Territory" />
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
           <Grid container spacing={3}>
+            <Grid container xs={12} sm={12} md={12} item spacing={3}>
+              <Grid xs={12} sm={12} md={12} item spacing={3}>
+              <Card className={classes.root}>
+                <CardContent>
+                  <Grid container spacing={3}>
+                    <Grid style={{ display: 'flex', alignItems: 'center' }} item xs={12} sm={6} md={3}>
+                      <Search />
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={3}>
+                      <Select
+                        id={'1'}
+                        size="small"
+                        value={value}
+                        onChange={onChange}
+                        options={options}
+                        label="Business Sector"
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={3}>
+                      <Select size="small" id={'2'} value={value} onChange={onChange} options={options} label="Territory" />
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
+              </Grid>
+            </Grid>
             <Grid container item xs={12} spacing={3}>
               <Grid item xs={12} sm={6} md={4}>
                 <TextOnly {...TextOnly.args} />
               </Grid>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid style={{ display: 'flex', justifyContent: 'center' }} item xs={12} sm={6} md={4}>
                 <WithAvatarsAndText {...WithAvatarsAndText.args} />
               </Grid>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid style={{ display: 'flex', justifyContent: 'flex-end' }} item xs={12} sm={6} md={4}>
                 <Install {...Install.args} />
               </Grid>
             </Grid>
@@ -246,10 +250,10 @@ export const CardsInPage = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <WithAvatarsAndText {...WithAvatarsAndText.args} />
               </Grid>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid style={{ display: 'flex', justifyContent: 'center' }} item xs={12} sm={6} md={4}>
                 <Install {...Install.args} />
               </Grid>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid style={{ display: 'flex', justifyContent: 'flex-end' }} item xs={12} sm={6} md={4}>
                 <TextOnly {...TextOnly.args} />
               </Grid>
             </Grid>
