@@ -193,14 +193,16 @@ export const CardsInPage = () => {
   const classes = useStyles();
   return (
     <Box>
-      <Box style={{ padding: 24 }}>
-        <PageHeader
-          title="Name of the Partner"
-          path="dashboard/admin/partners"
-          primaryText={'Create Team'}
-          secondaryText={'Export'}
-        />
-      </Box>
+      <Grid container spacing={3} style={{ padding: 24 }}>
+        <Grid container xs={12} sm={12} md={12} item spacing={3}>
+          <PageHeader
+            title="Name of the Partner"
+            path="dashboard/admin/partners"
+            primaryText={'Create Team'}
+            secondaryText={'Export'}
+          />
+        </Grid>
+      </Grid>
       <Tabs value={1} indicatorColor="primary" textColor="primary">
         <Tab label="Details" />
         <Tab label="Teams" />
