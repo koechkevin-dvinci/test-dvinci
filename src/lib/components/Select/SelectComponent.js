@@ -125,7 +125,7 @@ export const SelectComponent = (props) => {
             ...restProps.InputProps,
             ...adornment(restProps.options.find(({ label }) => params.inputProps.value === label)?.icon),
             style: {
-              height: customSize === 'small' ? 40 : customSize === 'medium' ? 56 : undefined,
+              minHeight: customSize === 'small' ? 40 : customSize === 'medium' ? 56 : undefined,
             },
           }}
           InputLabelProps={{
@@ -149,7 +149,7 @@ export const SelectComponent = (props) => {
             }}
             {...getTagProps({ index })}
           />
-        ) : (!focus && option.label + ', ')))
+        ) : (!inputValue && option.label + ', ')))
       }
     />
   );
