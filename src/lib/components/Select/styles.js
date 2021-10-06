@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 24
   },
 
+  input: {
+    display: 'none',
+  },
+
   popper: {
     top: '8px !important',
   },

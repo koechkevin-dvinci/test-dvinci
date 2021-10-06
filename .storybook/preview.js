@@ -1,7 +1,7 @@
 import { themes } from '@storybook/theming';
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import React from 'react';
-import { theme } from '../src/lib/theme';
+import { theme } from '../src/lib';
 import { useDarkMode } from 'storybook-dark-mode';
 
 const commonThemes = {
