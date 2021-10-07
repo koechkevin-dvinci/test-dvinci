@@ -17,7 +17,7 @@ export const Default = (args) => (
   </Box>
 );
 
-Default.args = {
+const args = {
   size: 'medium',
   value: {
     onClick: console.log,
@@ -73,3 +73,21 @@ Default.args = {
     );
   },
 };
+
+Default.args = args
+// export const AsInput = (args) => (
+//   <Box display="flex" justifyContent="center">
+//     <Box style={{ width: 400 }}>
+//       <SelectMenu {...args} />
+//     </Box>
+//   </Box>
+// );
+//
+// AsInput.args = {
+//   ...args,
+//   size: 'small',
+//   renderGroupName: undefined,
+//   groupBy: undefined,
+//   renderValue: (selected) => <Typography>{selected.label}</Typography>,
+// }
+

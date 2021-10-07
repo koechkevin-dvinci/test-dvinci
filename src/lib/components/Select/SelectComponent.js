@@ -21,12 +21,13 @@ const adornment = (icon) => {
 };
 
 export const SelectComponent = (props) => {
-  const { label, checkBoxProps, size, shrink, classes, disabled, helperText, renderTags, renderWithChips, onChange, ...restProps } = props;
+  const { label, checkBoxProps, size, shrink, classes, disabled, helperText, renderTags, renderWithChips, onChange, disableText, ...restProps } = props;
   const classNames = useStyles();
   const customSize = size || 'medium';
 
   const [focus, setFocus] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [val, setVal] = useState('');
   const [value, setValue] = useState([]);
 
   const onChangeValue= (...args) => {
@@ -49,6 +50,10 @@ export const SelectComponent = (props) => {
     if (reason === 'input') {
       setInputValue(value)
     }
+  }
+
+  const disabledInputChange = (ev, value, reason) => {
+    setVal(reason === 'select-option' ? value.label: '')
   }
 
   const multipleProps = restProps.multiple ? {
@@ -99,7 +104,8 @@ export const SelectComponent = (props) => {
       }}
       {...restProps}
       disabled={disabled}
-      onChange={onChangeValue}
+      onChange={disableText ? disabledInputChange :onChangeValue}
+      inputValue={disableText?val:undefined}
       renderInput={(params) => (
         <TextField
           fullWidth

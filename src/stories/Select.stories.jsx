@@ -9,6 +9,8 @@ export const Default = Template.bind({});
 Default.args = {
   label: 'Business Categories',
   size: 'small',
+  disableClearable: true,
+  disableText: true,
   options: [
     {
       label: 'One',
@@ -177,6 +179,7 @@ GroupedSelect.args = {
   groupBy: (option) => option.firstLetter,
   multiple: true,
   options: top100Films,
+  disableClearable: true,
   id: '1',
   label: 'Country',
   size: 'small',
