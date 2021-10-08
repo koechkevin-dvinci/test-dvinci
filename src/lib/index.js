@@ -13,6 +13,7 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import { AddNewMember, MemberListItem } from './components/AddNewMembers';
 import { createCustomTheme, baseOptions, themesOptions, theme } from './theme';
+import { StepLabel } from './components/StepLabel';
 import {
   TableRow,
   TableFooter,
@@ -80,5 +81,5 @@ export {
   CardBody,
   CardFooter,
   SelectMenu,
-  MaskedInput
+  MaskedInput, StepLabel
 };
