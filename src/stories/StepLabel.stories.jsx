@@ -1,4 +1,4 @@
-import {Button, StepLabel, OTPInput} from '../lib';
+import {Button, StepLabel, OTPInput, Input } from '../lib';
 import React, {useState} from 'react';
 import Box from '@material-ui/core/Box';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
@@ -75,11 +75,50 @@ const Step2Component = ({ onNextClick}) => {
     <Typography variant="h4">Tell us your name</Typography>
     <Typography variant="body2" color="textSecondary">This helps us understand how to address you in all communications</Typography>
     <Box style={{ marginTop: 32 }}>
-
+      <Box style={{ marginTop: 16 }}>
+      <Input InputLabelProps={{
+        shrink: true,
+      }} label="First Name *" />
+      </Box>
+      <Box style={{ marginTop: 16 }}>
+        <Input InputLabelProps={{
+          shrink: true,
+        }} label="Middle Name (optional)"  />
+      </Box>
+      <Box style={{ marginTop: 16 }}>
+        <Input InputLabelProps={{
+          shrink: true,
+        }} label="Last Name *"  />
+      </Box>
     </Box>
     <Box style={{ marginTop: 104 }}>
       <Button onClick={onNextClick} variant="contained" color="primary" style={{ width: 160 }}>
         Continue
+      </Button>
+    </Box>
+  </Box></Box>
+}
+
+const Step3Component = ({ onNextClick}) => {
+  return <Box display="flex" alignItems="center" justifyContent="flex-start" style={{ height: '100vh', paddingLeft: 85}}><Box>
+    <Typography color="textPrimary" variant="caption">Step 3</Typography>
+    <Typography variant="h4">Change your password</Typography>
+    <Typography variant="body2" color="textSecondary">Enter at least 8 characters that include 1 uppercase, 1 lowercase and 1 number</Typography>
+    <Box style={{ marginTop: 64 }}>
+      <Box style={{ marginTop: 16 }}>
+        <Input type="password" InputLabelProps={{
+          shrink: true,
+        }} label="New Password *" />
+      </Box>
+      <Box style={{ marginTop: 16 }}>
+        <Input type="password" InputLabelProps={{
+          shrink: true,
+        }} label="Enter new password again *"  />
+      </Box>
+    </Box>
+    <Box style={{ marginTop: 104 }}>
+      <Button onClick={onNextClick} variant="contained" color="primary" style={{ width: 160 }}>
+        Change
       </Button>
     </Box>
   </Box></Box>
@@ -103,6 +142,7 @@ export const ExampleInUsage = (args) => {
       <Box className={classNames.body}>
         {activeIndex === 0 && <Step1Component onNextClick={() => setActiveIndex((val) => val === 2 ?0: val+1)} />}
         {activeIndex === 1 && <Step2Component onNextClick={() => setActiveIndex((val) => val === 2 ?0: val+1)} />}
+        {activeIndex === 2 && <Step3Component onNextClick={() => setActiveIndex((val) => val === 2 ?0: val+1)} />}
       </Box>
     </Box>
   );
