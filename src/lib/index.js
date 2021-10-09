@@ -8,11 +8,14 @@ import ManagementCard, {
 import Search from './components/Search';
 import Modal from './components/Modal';
 import { Tabs, Tab, TabPanel } from './components/Tabs';
-import  SelectComponent  from './components/Select';
+import SelectComponent from './components/Select';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import { AddNewMember, MemberListItem } from './components/AddNewMembers';
 import { createCustomTheme, baseOptions, themesOptions, theme } from './theme';
+import { StepLabel } from './components/StepLabel';
+import { OTPInput } from './components/OTPComponent';
+
 import {
   TableRow,
   TableFooter,
@@ -36,7 +39,7 @@ import {
   List as MuiList,
 } from '@material-ui/core';
 
-import { SelectMenu } from './components/SelectMenu'
+import { SelectMenu } from './components/SelectMenu';
 
 export {
   Button,
@@ -80,5 +83,7 @@ export {
   CardBody,
   CardFooter,
   SelectMenu,
-  MaskedInput
+  MaskedInput,
+  StepLabel,
+  OTPInput,
 };
