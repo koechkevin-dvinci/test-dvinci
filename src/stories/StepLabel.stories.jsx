@@ -1,4 +1,4 @@
-import {Button, StepLabel} from '../lib';
+import {Button, StepLabel, OTPInput} from '../lib';
 import React, {useState} from 'react';
 import Box from '@material-ui/core/Box';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
@@ -6,6 +6,7 @@ import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 import LockRoundedIcon from '@material-ui/icons/LockRounded';
 import { makeStyles, Typography } from '@material-ui/core';
 import image from '../stories/assets/Logo.svg';
+
 
 export default {
   component: StepLabel,
@@ -47,9 +48,45 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
+
+const Step1Component = ({ onNextClick}) => {
+  const [value, setValue] = useState('');
+  return <Box display="flex" alignItems="center" justifyContent="flex-start" style={{ height: '100vh', paddingLeft: 85}}><Box>
+    <Typography color="textPrimary" variant="caption">Step 1</Typography>
+    <Typography variant="h4">Verify your account</Typography>
+    <Typography variant="body2" color="textSecondary">Check your email for a 6 digit code</Typography>
+    <Box style={{ marginTop: 32 }}>
+      <OTPInput value={value} onChange={setValue} />
+    </Box>
+    <Box style={{ marginTop: 104 }}>
+      <Button onClick={onNextClick} variant="contained" color="primary" style={{ width: 160 }}>
+        Verify
+      </Button>
+      <Typography style={{ marginTop: 24 }} color="textSecondary" variant="body2">
+        Don’t have a code? Resend
+      </Typography>
+    </Box>
+  </Box></Box>
+}
+
+const Step2Component = ({ onNextClick}) => {
+  return <Box display="flex" alignItems="center" justifyContent="flex-start" style={{ height: '100vh', paddingLeft: 85}}><Box>
+    <Typography color="textPrimary" variant="caption">Step 2</Typography>
+    <Typography variant="h4">Tell us your name</Typography>
+    <Typography variant="body2" color="textSecondary">This helps us understand how to address you in all communications</Typography>
+    <Box style={{ marginTop: 32 }}>
+
+    </Box>
+    <Box style={{ marginTop: 104 }}>
+      <Button onClick={onNextClick} variant="contained" color="primary" style={{ width: 160 }}>
+        Continue
+      </Button>
+    </Box>
+  </Box></Box>
+}
 export const ExampleInUsage = (args) => {
   const classNames = useStyles();
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(0);
   return (
     <Box display="flex" className={classNames.root}>
       <Box className={classNames.sideBar}>
@@ -64,9 +101,8 @@ export const ExampleInUsage = (args) => {
         </Box>
       </Box>
       <Box className={classNames.body}>
-        <Button onClick={() => setActiveIndex((val) => val === 2 ?0: val+1)} variant="contained" color="primary" style={{ marginTop: 300, marginLeft: 40, width: 400 }}>
-          Next Step
-        </Button>
+        {activeIndex === 0 && <Step1Component onNextClick={() => setActiveIndex((val) => val === 2 ?0: val+1)} />}
+        {activeIndex === 1 && <Step2Component onNextClick={() => setActiveIndex((val) => val === 2 ?0: val+1)} />}
       </Box>
     </Box>
   );

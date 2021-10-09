@@ -96,7 +96,7 @@ export const baseOptions = {
     },
     h4: {
       fontWeight: 600,
-      fontSize: 22,
+      fontSize: 32,
     },
     h5: {
       fontWeight: 600,
