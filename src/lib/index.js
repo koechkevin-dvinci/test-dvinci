@@ -15,6 +15,7 @@ import { AddNewMember, MemberListItem } from './components/AddNewMembers';
 import { createCustomTheme, baseOptions, themesOptions, theme } from './theme';
 import { StepLabel } from './components/StepLabel';
 import { OTPInput } from './components/OTPComponent';
+import { CircularProgress as Loader } from '@material-ui/core';
 
 import {
   TableRow,
@@ -86,4 +87,5 @@ export {
   MaskedInput,
   StepLabel,
   OTPInput,
+  Loader,
 };
