@@ -15,7 +15,7 @@ export const PageHeader = (props) => {
   const useStyles = makeStyles(styles);
   const classes = useStyles();
   return (
-    <Grid container justifyContent="space-between" alignItems="center" {...restProps}>
+    <Grid className={classes.pageHeader} container justifyContent="space-between" alignItems="center" {...restProps}>
       <Grid item>
         <Box display="flex" alignItems="center" style={{ height: 32 }}>
           {splitPaths.map((path, index) => (

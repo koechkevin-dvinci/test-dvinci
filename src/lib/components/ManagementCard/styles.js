@@ -4,6 +4,9 @@ export const styles = (theme) => ({
     width: '100%',
     minWidth: 320
   },
+  pageHeader: {
+    padding: 12
+  },
   avatar: {
     width: theme.spacing(4),
     height: theme.spacing(4),
