@@ -293,7 +293,7 @@ export const createCustomTheme = (config = {}) => {
               '&.MuiButton-sizeLarge': {
                 height: 40,
                 fontSize: 14,
-                minWidth: 50
+                minWidth: 100
               }
             },
           },
