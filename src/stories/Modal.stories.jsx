@@ -1,7 +1,7 @@
 import React from 'react';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import { Input, Modal, Select } from '../lib';
-import { Grid, Button } from '@material-ui/core';
+import { Input, Modal, Select, Button } from '../lib';
+import { Grid } from '@material-ui/core';
 
 export default {
   component: Modal,
@@ -22,6 +22,9 @@ Default.args = {
   okText: 'Create',
   onOk: () => {},
   onCancel: () => {},
+  okButtonProps: {
+    loading: true
+  },
   leftFooterChildren: () => (
     <Button>Button</Button>
   )

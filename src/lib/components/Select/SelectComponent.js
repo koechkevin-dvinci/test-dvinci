@@ -1,4 +1,4 @@
-import React, {Fragment, useRef, useState} from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import AutoComplete from '@material-ui/lab/Autocomplete';
 import { Chip, TextField, Typography } from '@material-ui/core';
 import parse from 'autosuggest-highlight/parse';
@@ -21,7 +21,21 @@ const adornment = (icon) => {
 };
 
 export const SelectComponent = (props) => {
-  const { label, checkBoxProps, size, shrink, classes, disabled, helperText, renderTags, renderWithChips, onChange, disableText, ...restProps } = props;
+  const {
+    label,
+    checkBoxProps,
+    size,
+    shrink,
+    classes,
+    disabled,
+    helperText,
+    renderTags,
+    renderWithChips,
+    onChange,
+    disableText,
+    subLabelProps,
+    ...restProps
+  } = props;
   const classNames = useStyles();
   const customSize = size || 'medium';
 
@@ -30,36 +44,38 @@ export const SelectComponent = (props) => {
   const [val, setVal] = useState('');
   const [value, setValue] = useState([]);
 
-  const onChangeValue= (...args) => {
-    if (restProps.multiple){
-      setValue(args[1])
+  const onChangeValue = (...args) => {
+    if (restProps.multiple) {
+      setValue(args[1]);
     }
     if (onChange) {
-      onChange(...args)
+      onChange(...args);
     }
-  }
+  };
   const ref = useRef();
 
   const getLimitTags = () => {
     const inputWidth = ref?.current?.offsetWidth;
-    const longString = value.map(({label}) => label).join(', ') + ' (xxx)';
+    const longString = value.map(({ label }) => label).join(', ') + ' (xxx)';
     const substr = longString.substr(0, Math.floor(inputWidth / 8) - 4);
-    return Math.max(1,substr.split(', ').length - 1)
-  }
+    return Math.max(1, substr.split(', ').length - 1);
+  };
   const onInputChange = (ev, value, reason) => {
     if (reason === 'input') {
-      setInputValue(value)
+      setInputValue(value);
     }
-  }
+  };
 
   const disabledInputChange = (ev, value, reason) => {
-    setVal(reason === 'select-option' ? value.label: '')
-  }
+    setVal(reason === 'select-option' ? value.label : '');
+  };
 
-  const multipleProps = restProps.multiple ? {
-    getLimitTagsText: (more) => ` (${more})`,
-    inputValue: focus ? inputValue : ''
-  } : {}
+  const multipleProps = restProps.multiple
+    ? {
+        getLimitTagsText: (more) => ` (${more})`,
+        inputValue: focus ? inputValue : '',
+      }
+    : {};
 
   return (
     <AutoComplete
@@ -88,14 +104,24 @@ export const SelectComponent = (props) => {
                     {part.text}
                   </span>
                 ))}
+                {option.subLabel && (
+                  <Typography color="textSecondary" variant="caption" style={{ marginLeft: 16 }} {...subLabelProps}>
+                    {option.subLabel}
+                  </Typography>
+                )}
               </>
             ) : (
               <>
                 {option.icon && <span style={{ marginRight: 16 }}>{option.icon}</span>}
                 {parts.map((part, index) => (
-                  <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
-                    {part.text}
-                  </span>
+                  <Fragment key={index}>
+                    <span style={{ fontWeight: part.highlight ? 700 : 400 }}>{part.text}</span>
+                    {option.subLabel && (
+                      <Typography color="textSecondary" variant="caption" style={{ marginLeft: 16 }} {...subLabelProps}>
+                        {option.subLabel}
+                      </Typography>
+                    )}
+                  </Fragment>
                 ))}
               </>
             )}
@@ -104,15 +130,15 @@ export const SelectComponent = (props) => {
       }}
       {...restProps}
       disabled={disabled}
-      onChange={disableText ? disabledInputChange :onChangeValue}
-      inputValue={disableText?val:undefined}
+      onChange={disableText ? disabledInputChange : onChangeValue}
+      inputValue={disableText ? val : undefined}
       renderInput={(params) => (
         <TextField
           fullWidth
           ref={ref}
           {...params}
           variant="outlined"
-          style={{ textOverflow: 'ellipsis'}}
+          style={{ textOverflow: 'ellipsis' }}
           label={disabled ? <Typography color="textSecondary">{label}</Typography> : label}
           placeholder={restProps.placeholder}
           onFocus={() => setFocus(true)}
@@ -139,23 +165,28 @@ export const SelectComponent = (props) => {
           }}
         />
       )}
-
       limitTags={getLimitTags()}
       disableCloseOnSelect
       selectOnFocus={false}
       onInputChange={onInputChange}
       {...multipleProps}
-      renderTags={renderTags || ((tagValue, getTagProps) =>
-        tagValue.map((option, index) => renderWithChips ? (
-          <Chip
-            size="small"
-            label={option.label}
-            classes={{
-              root: classNames.chip,
-            }}
-            {...getTagProps({ index })}
-          />
-        ) : (!inputValue && option.label + ', ')))
+      renderTags={
+        renderTags ||
+        ((tagValue, getTagProps) =>
+          tagValue.map((option, index) =>
+            renderWithChips ? (
+              <Chip
+                size="small"
+                label={option.label}
+                classes={{
+                  root: classNames.chip,
+                }}
+                {...getTagProps({ index })}
+              />
+            ) : (
+              !inputValue && option.label + ', '
+            ),
+          ))
       }
     />
   );

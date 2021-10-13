@@ -176,13 +176,6 @@ const options = [
     value: 30,
   },
 ];
-// export const PageHeaderComponent = (args) => <PageHeader {...args} />
-// PageHeaderComponent.args = {
-//   title: 'Name of the Partner',
-//   path: 'dashboard/admin/partners',
-//   primaryText: 'Create Team',
-//   secondaryText: 'Export'
-// };
 
 export const CardsInPage = () => {
   const useStyles = makeStyles({ ...CardStyles });

@@ -114,8 +114,13 @@ const AddNewMember = (props) => {
     showAddMembers = true,
   } = props;
   const classes = useStyles();
-  const [selectedUser, setSelectedUser] = useState();
+  const [selectedUser, setSelectedUser] = useState([]);
   const [placeholder, setPlaceHolder] = useState(() => selectProps.placeholder || 'Type name or email');
+
+  const onClickAdd = () => {
+    setSelectedUser([]);
+    onAddMember(selectedUser)
+  }
 
   return (
       <Box className={classes.body}>
@@ -131,6 +136,7 @@ const AddNewMember = (props) => {
               onChange={(_, value) => setSelectedUser(value)}
               onFocus={() => setPlaceHolder('')}
               onBlur={() => setPlaceHolder(selectProps.placeholder || 'Type name or email')}
+              value={selectedUser}
               {...selectProps}
               placeholder={placeholder}
             />
@@ -140,7 +146,7 @@ const AddNewMember = (props) => {
             style={{ marginLeft: 16 }}
             color="primary"
             variant="outlined"
-            onClick={() => onAddMember(selectedUser)}
+            onClick={onClickAdd}
             {...addButtonProps}
           >
             Add

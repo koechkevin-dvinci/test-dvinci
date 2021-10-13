@@ -11,10 +11,14 @@ Default.args = {
   size: 'small',
   disableClearable: true,
   disableText: true,
+  subLabelProps: {
+    color: 'primary'
+  },
   options: [
     {
       label: 'One',
       value: 1,
+      subLabel: 'Manager'
     },
     {
       label: 'Ten',

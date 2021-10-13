@@ -1,6 +1,6 @@
 export const styles = (theme) => ({
   root: {
-    // maxWidth: 362,
+    maxWidth: 362,
     width: '100%',
     minWidth: 320
   },
@@ -13,7 +13,7 @@ export const styles = (theme) => ({
     fontSize: 14
   },
   disabled: {
-    // maxWidth: 362,
+    maxWidth: 362,
     width: '100%',
     backgroundColor: 'transparent',
     minWidth: 320

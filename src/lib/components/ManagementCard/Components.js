@@ -120,14 +120,30 @@ export const BodyComponent = ({ header, description, disabled }) => {
   );
 };
 
+const getInitials = (displayName = '') => {
+  let splittedName = displayName.split(/[\s_\-@]/g);
+  if (splittedName.length < 2) {
+    splittedName[0] = displayName || '';
+    splittedName[1] = displayName.substr(1) || '';
+  }
+  return (splittedName[0][0] + splittedName[1][0]).toUpperCase();
+}
 export const FooterComponent = (props) => {
   const { text, avatars = [], onAddMember, disabled } = props;
   const useStyles = makeStyles(styles);
   const classes = useStyles();
+
+  const avatarValues =avatars.map((avatar) => {
+    const altIcon = getInitials(avatar.name || avatar.email);
+    return {
+      altIcon,
+      ...avatar
+    }
+  })
   return (
     <Box style={{ flex: 1 }} display="flex" justifyContent="space-between" alignItems="center">
       <Box display="flex" alignItems="center" style={{ flex: 1 }}>
-        {avatars.map((user, index) => {
+        {avatarValues.map((user, index) => {
           return (
             index < 5 && (
               <Avatar
