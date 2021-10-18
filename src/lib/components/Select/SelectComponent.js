@@ -155,7 +155,7 @@ export const SelectComponent = (props) => {
           InputProps={{
             ...params.InputProps,
             ...restProps.InputProps,
-            ...adornment(restProps.options.find(({ label }) => params.inputProps.value === label)?.icon),
+            ...adornment(restProps.options?.find(({ label }) => params.inputProps.value === label)?.icon),
             style: {
               minHeight: customSize === 'small' ? 40 : customSize === 'medium' ? 56 : undefined,
             },
