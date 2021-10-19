@@ -8,6 +8,8 @@
     "README.md"
   ],
   "dependencies": {
+    "@date-io/date-fns": "^2.11.0",
+    "@mui/lab": "^5.0.0-alpha.51",
     "autosuggest-highlight": "^3.1.1",
     "lodash": "^4.17.21",
     "prettier": "^2.4.1",

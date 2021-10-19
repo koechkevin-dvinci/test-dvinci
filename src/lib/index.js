@@ -32,6 +32,9 @@ import { UserAccessComponent, UserTable } from './components/UsersList';
 import Input, { MaskedInput } from './components/Input';
 import { THEMES, userAccessOptions } from './constants';
 import { UserDetail } from './components/UserDetailComponent';
+import {DateTimePicker, TimePicker, DesktopDatePicker } from './components/DateTimePicker';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import {
   ListItemAvatar as MuiListItemAvatar,
   ListItemText as MuiListItemText,
@@ -88,4 +91,5 @@ export {
   StepLabel,
   OTPInput,
   Loader,
+  DateTimePicker, TimePicker, DesktopDatePicker, AdapterDateFns, LocalizationProvider
 };
