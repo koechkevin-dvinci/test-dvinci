@@ -51,7 +51,7 @@ const DateTimePicker = (props) => {
 
   return (
     <>
-      <style jsx>
+      <style>
         {`.css-1oqqxac-MuiPaper-root {
           background: #222b36;
           margin-top: 16px;
