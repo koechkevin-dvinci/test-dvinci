@@ -6,6 +6,7 @@ import { UserTeamsList } from '../lib/components/UsersList/UserListComponents';
 import Search from '../lib/components/Search/Components';
 import Box from '@material-ui/core/Box';
 import SelectComponent from '../lib/components/Select/SelectComponent';
+import { Typography } from '@material-ui/core';
 
 export default {
   component: Table,
@@ -84,52 +85,64 @@ const data = [
     ],
     territories: 'SC, CA, TX, MP, WC, WS (24)',
     access: 'none',
-    disabled: true
+    disabled: true,
   },
 ];
 
 export const DefaultTable = () => {
   return (
-    <Card>
-      <CardHeader />
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell padding="checkbox">
-              <Checkbox onChange={console.log} inputProps={{ 'aria-label': 'select all desserts' }} />
-            </TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Teams</TableCell>
-            <TableCell>Territories</TableCell>
-            <TableCell>Access</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((value, index) => {
-            return (
-              <TableRow key={index}>
-                <TableCell padding="checkbox">
-                  <Checkbox onChange={console.log} inputProps={{ 'aria-label': 'select all desserts' }} />
-                </TableCell>
-                <TableCell>{value.name}</TableCell>
-                <TableCell>{value.email}</TableCell>
-                <TableCell>
-                  <UserTeamsList teams={value.teams} />
-                </TableCell>
-                <TableCell>{value.territories}</TableCell>
-                <TableCell>{value.access}</TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-      <CardHeader />
-    </Card>
+    <>
+      <Typography style={{ textAlign: 'center' }} variant="h4">
+        Table
+      </Typography>
+      <Card>
+        <CardHeader />
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell padding="checkbox">
+                <Checkbox onChange={console.log} inputProps={{ 'aria-label': 'select all desserts' }} />
+              </TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Teams</TableCell>
+              <TableCell>Territories</TableCell>
+              <TableCell>Access</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((value, index) => {
+              return (
+                <TableRow key={index}>
+                  <TableCell padding="checkbox">
+                    <Checkbox onChange={console.log} inputProps={{ 'aria-label': 'select all desserts' }} />
+                  </TableCell>
+                  <TableCell>{value.name}</TableCell>
+                  <TableCell>{value.email}</TableCell>
+                  <TableCell>
+                    <UserTeamsList teams={value.teams} />
+                  </TableCell>
+                  <TableCell>{value.territories}</TableCell>
+                  <TableCell>{value.access}</TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+        <CardHeader />
+      </Card>
+    </>
   );
 };
 
-export const UserList = (args) => <UserTable {...args} />;
+export const UserList = (args) => (
+  <>
+    <Typography style={{ textAlign: 'center' }} variant="h4">
+      UserTable
+    </Typography>
+    <UserTable {...args} />
+  </>
+);
 
 UserList.args = {
   users: data,

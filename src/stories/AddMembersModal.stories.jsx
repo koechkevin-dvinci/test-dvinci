@@ -2,9 +2,11 @@ import React from 'react';
 import { AddNewMember } from '../lib';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
+import {Typography} from "@material-ui/core";
 
 const Template = ({ open, ...args }) => (
-  <Box display="flex" justifyContent="center">
+  <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+    <Typography variant="h4">AddNewMember</Typography>
     <Paper style={{ width: 500, padding: 24 }}>
       <AddNewMember {...args} />
     </Paper>

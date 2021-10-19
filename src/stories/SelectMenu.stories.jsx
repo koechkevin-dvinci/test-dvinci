@@ -2,6 +2,7 @@ import { SelectMenu } from '../lib';
 import ErrorIcon from '@material-ui/icons/Error';
 import Box from '@material-ui/core/Box';
 import { Typography } from '@material-ui/core';
+import React from "react";
 
 export default {
   title: 'Select Menu Component',
@@ -10,7 +11,10 @@ export default {
 };
 
 export const Default = (args) => (
-  <Box display="flex" justifyContent="center">
+  <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+    <Typography variant="h4" style={{ textAlign: 'center' }}>
+      SelectMenu
+    </Typography>
     <Box style={{ width: 400 }}>
       <SelectMenu {...args} />
     </Box>

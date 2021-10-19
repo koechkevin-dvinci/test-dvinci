@@ -1,12 +1,16 @@
 import { MaskedInput } from '../lib';
 import React from "react";
+import Typography from "@material-ui/core/Typography";
 
 export default {
   component: MaskedInput,
   title: 'MaskedInput',
 };
 
-export const InputMasked = (args) => <MaskedInput {...args} />
+export const InputMasked = (args) => <>
+  <Typography variant="h4" style={{ textAlign: 'center'}}>MaskedInput</Typography>
+  <MaskedInput {...args} />
+</>
 InputMasked.args = {
   variant: 'outlined',
   label: 'Home number',

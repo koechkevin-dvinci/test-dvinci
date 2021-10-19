@@ -9,7 +9,9 @@ export default {
 };
 
 export const ShowUserDetail = (args) => {
-  return <UserDetail {...args} />;
+  return <>
+    <Typography style={{ textAlign: 'center'}} variant="h4">UserDetail</Typography>
+    <UserDetail {...args} /></>;
 };
 
 const Team = ({name, role, disabled = false}) => {

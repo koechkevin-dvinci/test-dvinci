@@ -17,6 +17,7 @@ export const Default = (args) => {
   return (
     <Box display="flex" justifyContent="center">
       <Box style={{ width: 400 }}>
+        <Typography variant="h4">StepLabel</Typography>
         <StepLabel {...args} />
       </Box>
     </Box>

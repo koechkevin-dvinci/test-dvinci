@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input, Checkbox } from '../lib';
-import { FormControlLabel } from '@material-ui/core';
+import {FormControlLabel, Typography} from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 
 export default {
@@ -9,7 +9,8 @@ export default {
 };
 
 const InputTemplate = (args) => (
-  <Box display="flex" justifyContent="center">
+  <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column">
+    <Typography variant="h4">Input</Typography>
     <Box style={{ width: 400 }}>
       <Input {...args}>Text</Input>
     </Box>

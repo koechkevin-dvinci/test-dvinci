@@ -1,6 +1,7 @@
-import { UserAccessComponent } from '../lib/components/UsersList';
+import { UserAccessComponent } from '../lib';
 import React from 'react';
 import { userAccessOptions } from '../lib';
+import {Typography} from "@material-ui/core";
 
 export default {
   component: UserAccessComponent,
@@ -8,7 +9,9 @@ export default {
 };
 
 export const DefaultUserAccessComponent = (args) => {
-  return <UserAccessComponent {...args} />;
+  return <>
+    <Typography variant="h4">UserAccessComponent</Typography>
+    <UserAccessComponent {...args} /></>;
 };
 
 DefaultUserAccessComponent.args = {

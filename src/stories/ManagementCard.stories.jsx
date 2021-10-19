@@ -27,7 +27,7 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => {
+const Template = ({hideComponentName,...args}) => {
   const [open, setOpen] = useState(args.menuOpen)
 
   const menuChildren = [
@@ -39,7 +39,10 @@ const Template = (args) => {
       <Typography color="secondary">De-Activate</Typography>
     </MenuItem>,
   ];
-  return <ManagementCard {...args} menuChildren={menuChildren} menuOpen={open} onCloseMenu={() => setOpen(false)} onHamburgerClick={() => setOpen(true)} />
+  return <>
+    {!hideComponentName &&<Typography variant="h4">ManagementCard</Typography>}
+    <ManagementCard {...args} menuChildren={menuChildren} menuOpen={open} onCloseMenu={() => setOpen(false)} onHamburgerClick={() => setOpen(true)} />
+  </>
 };
 
 const MenuChildren = [
@@ -232,31 +235,31 @@ export const CardsInPage = () => {
             </Grid>
             <Grid container item xs={12} spacing={3}>
               <Grid item xs={12} sm={6} md={4}>
-                <TextOnly {...TextOnly.args} />
+                <TextOnly hideComponentName {...TextOnly.args} />
               </Grid>
               <Grid style={{ display: 'flex', justifyContent: 'center' }} item xs={12} sm={6} md={4}>
-                <WithAvatarsAndText {...WithAvatarsAndText.args} />
+                <WithAvatarsAndText hideComponentName {...WithAvatarsAndText.args} />
               </Grid>
               <Grid style={{ display: 'flex', justifyContent: 'flex-end' }} item xs={12} sm={6} md={4}>
-                <Install {...Install.args} />
+                <Install hideComponentName {...Install.args} />
               </Grid>
             </Grid>
             <Grid container item xs={12} spacing={3}>
               <Grid item xs={12} sm={6} md={4}>
-                <WithAvatarsAndText {...WithAvatarsAndText.args} />
+                <WithAvatarsAndText hideComponentName {...WithAvatarsAndText.args} />
               </Grid>
               <Grid style={{ display: 'flex', justifyContent: 'center' }} item xs={12} sm={6} md={4}>
-                <Install {...Install.args} />
+                <Install hideComponentName {...Install.args} />
               </Grid>
               <Grid style={{ display: 'flex', justifyContent: 'flex-end' }} item xs={12} sm={6} md={4}>
-                <TextOnly {...TextOnly.args} />
+                <TextOnly hideComponentName {...TextOnly.args} />
               </Grid>
             </Grid>
           </Grid>
           <Divider style={{ margin: '16px 0' }} />
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={4}>
-              <Disabled {...Disabled.args} />
+              <Disabled hideComponentName {...Disabled.args} />
             </Grid>
           </Grid>
         </Box>
@@ -265,7 +268,10 @@ export const CardsInPage = () => {
   );
 };
 
-export const PageHeaderComponent = (args) => <PageHeader {...args} />;
+export const PageHeaderComponent = (args) => <>
+  <Typography variant="h4" style={{ textAlign: 'center'}}>PageHeader</Typography>
+  <PageHeader {...args} />
+</>;
 
 PageHeaderComponent.args = {
   title: 'John Doe',

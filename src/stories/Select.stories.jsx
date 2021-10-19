@@ -2,8 +2,16 @@ import React from 'react';
 import { Select } from '../lib';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Box from '@material-ui/core/Box';
+import { Typography } from '@material-ui/core';
 
-const Template = (args) => <Select {...args} />;
+const Template = (args) => (
+  <>
+    <Typography variant="h4" style={{ textAlign: 'center' }}>
+      Select
+    </Typography>
+    <Select {...args} />
+  </>
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -12,13 +20,13 @@ Default.args = {
   disableClearable: true,
   disableText: true,
   subLabelProps: {
-    color: 'primary'
+    color: 'primary',
   },
   options: [
     {
       label: 'One',
       value: 1,
-      subLabel: 'Manager'
+      subLabel: 'Manager',
     },
     {
       label: 'Ten',
@@ -36,7 +44,10 @@ Default.args = {
 };
 
 const AutoCompleteFunc = (args) => (
-  <Box display="flex" justifyContent="center">
+  <Box display="flex" justifyContent="center" flexDirection="column">
+    <Typography variant="h4" style={{ textAlign: 'center' }}>
+      Select
+    </Typography>
     <Box style={{ width: 400 }}>
       <Select {...args} />
     </Box>
@@ -228,7 +239,7 @@ MultipleSelectSelect.args = {
   label: 'Multiple Select',
   size: 'small',
   renderWithChips: false, // Use chips to display selected value on multiple
-  onChange: console.log
+  onChange: console.log,
 };
 export default {
   title: 'Select Component',

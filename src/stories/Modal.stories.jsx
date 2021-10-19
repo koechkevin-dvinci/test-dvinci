@@ -2,6 +2,7 @@ import React from 'react';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import { Input, Modal, Select, Button } from '../lib';
 import { Grid } from '@material-ui/core';
+import Typography from "@material-ui/core/Typography";
 
 export default {
   component: Modal,
@@ -9,9 +10,12 @@ export default {
 };
 
 const ModalTemplate = (args) => (
-  <Modal {...args}>
-    <DialogContentText>Default modal view</DialogContentText>
-  </Modal>
+  <>
+    <Typography variant="h4" style={{ textAlign: 'center'}}>Modal</Typography>
+    <Modal {...args}>
+      <DialogContentText>Default modal view</DialogContentText>
+    </Modal>
+  </>
 );
 
 export const Default = ModalTemplate.bind({});
